@@ -39,16 +39,6 @@ export default function Personal({}: Props) {
             <FaGithub />
           </div>
         </a>
-        <Link href="mailto:zjjc123@gmail.com">
-          <div className="rounded-full shadow-lg shadow-gray-300 p-4 cursor-pointer hover:scale-110 ease-cubic duration-300">
-            <AiOutlineMail />
-          </div>
-        </Link>
-        <Link href="/resume">
-          <div className="rounded-full shadow-lg shadow-gray-300 p-4 cursor-pointer hover:scale-110 ease-cubic duration-300">
-            <BsFillPersonLinesFill />
-          </div>
-        </Link>
       </div>
     </>
   );
