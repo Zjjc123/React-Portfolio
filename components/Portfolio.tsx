@@ -29,7 +29,7 @@ export default function Portfolio({}: Props) {
       >
         {hover2 ? '> VIDEOS' : 'VIDEOS'}
       </Link>
-      <Link
+      {/* <Link
         href="/photography"
         className="text-4xl mb-8 text-gray-800 hover:text-gray-400"
         onMouseEnter={() => setHover3(true)}
@@ -44,7 +44,7 @@ export default function Portfolio({}: Props) {
         onMouseLeave={() => setHover4(false)}
       >
         {hover4 ? '> RESUME' : 'RESUME'}
-      </Link>
+      </Link> */}
     </div>
   );
 }

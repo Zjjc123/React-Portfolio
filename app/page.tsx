@@ -14,10 +14,10 @@ export default function Home() {
           <div className="uppercase text-xl tracking-widest mb-4 font-semibold">PORTFOLIO</div>
           <Portfolio />
         </div>
-        <div className="md:flex-1 px-8">
+        {/* <div className="md:flex-1 px-8">
           <p className="uppercase text-xl tracking-widest mb-4 font-semibold">Blog</p>
           <Blog />
-        </div>
+        </div> */}
       </div>
     </div>
   );
