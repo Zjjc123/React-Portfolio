@@ -22,7 +22,7 @@ export default function Pin({
         height: '20px',
         borderRadius: '50%',
         backgroundColor: color,
-        boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+        boxShadow: '0 4px 8px rgba(0,0,0,0.3)',
         zIndex: 100,
       }}
     />
