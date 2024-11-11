@@ -8,7 +8,7 @@ interface VideoModuleProps {
   src: string;
 }
 
-const VideoModule: React.FC<VideoModuleProps> = (props) => {
+export default function VideoModule({ title, src }: VideoModuleProps) {
   return (
     <Card
       shadow="sm"
@@ -18,17 +18,15 @@ const VideoModule: React.FC<VideoModuleProps> = (props) => {
       className="my-8 max-w-fit mx-auto"
     >
       <Title order={2} className="mb-4 font-sans font-ultralight">
-        {props.title}
+        {title}
       </Title>
       <iframe
         className="w-full aspect-video"
-        title={props.title}
-        src={'https://youtube.com/embed/' + props.src}
+        title={title}
+        src={'https://youtube.com/embed/' + src}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       ></iframe>
     </Card>
   );
-};
-
-export default VideoModule;
+}

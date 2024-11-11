@@ -1,6 +1,6 @@
 'use client';
 
-import { Text, Box, Group, ActionIcon } from '@mantine/core';
+import { Text, Box } from '@mantine/core';
 
 export default function Personal() {
   return (
@@ -19,27 +19,6 @@ export default function Personal() {
           tell stories with digital media.
         </Text>
       </Box>
-      <Group justify="center" gap="xl" mt="xl">
-        <ActionIcon
-          component="a"
-          href="https://www.linkedin.com/in/zjjc123/"
-          target="_blank"
-          rel="noreferrer"
-          size="lg"
-          radius="xl"
-          variant="filled"
-          color="blue"
-        ></ActionIcon>
-        <ActionIcon
-          component="a"
-          href="https://github.com/zjjc123"
-          target="_blank"
-          rel="noreferrer"
-          size="lg"
-          radius="xl"
-          variant="filled"
-        ></ActionIcon>
-      </Group>
     </>
   );
 }
