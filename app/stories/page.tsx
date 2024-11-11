@@ -1,14 +1,12 @@
 'use client';
-import { Button, Card, Container } from '@mantine/core';
-import Link from 'next/link';
+import { Card, Container } from '@mantine/core';
 import HoverLink from '../../components/HoverLink';
+import { BackButton } from '../../components/BackButton';
 
 export default function StoriesPage() {
   return (
     <Container>
-      <Button component={Link} href="/" variant="outline" color="dark" mb="xl">
-        Back
-      </Button>
+      <BackButton href="/" />
       <Card shadow="sm" radius="md" withBorder>
         <HoverLink
           href="/stories/elon-money"

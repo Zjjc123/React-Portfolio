@@ -2,15 +2,14 @@
 import { Button, Container, Flex, Text } from '@mantine/core';
 import VideoModule from '../../components/VideoModule';
 import Link from 'next/link';
+import { BackButton } from '../../components/BackButton';
 
 type Props = {};
 
 export default function VideoPage({}: Props) {
   return (
     <Container>
-      <Button component={Link} href="/" variant="outline" color="dark" mb="xl">
-        Back
-      </Button>
+      <BackButton href="/" />
       <Flex direction="column" gap="lg">
         <VideoModule
           title="University of Washington ASUW Black Student Commission"

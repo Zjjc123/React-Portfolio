@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: any }) {
           <Box
             py="xl"
             style={{
-              backgroundColor: '#e0e0e0',
+              backgroundColor: '#f0f0f0',
               minHeight: '100vh',
               backgroundImage: 'radial-gradient(#a0a0a0 1px, transparent 1px)',
               backgroundSize: '20px 20px',

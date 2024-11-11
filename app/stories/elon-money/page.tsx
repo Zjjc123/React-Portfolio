@@ -1,6 +1,14 @@
 'use client';
-import { Container } from '@mantine/core';
+import { Card, Container, Text } from '@mantine/core';
+import { BackButton } from '../../../components/BackButton';
 
 export default function StoriesPage() {
-  return <Container>Elon</Container>;
+  return (
+    <Container>
+      <BackButton href="/stories" />
+      <Card shadow="sm" radius="md" withBorder>
+        <Text>Elon</Text>
+      </Card>
+    </Container>
+  );
 }
