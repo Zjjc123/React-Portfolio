@@ -1,12 +1,19 @@
 'use client';
+import { Button, Container, Flex, Text } from '@mantine/core';
 import VideoModule from '../../components/VideoModule';
+import Link from 'next/link';
 
 type Props = {};
 
 export default function VideoPage({}: Props) {
   return (
-    <div>
-      <div className="flex flex-col justify-center my-8">
+    <Container my="xl">
+      <Button component={Link} href="/" variant="outline" color="dark" my="xl">
+        <Text size="lg" fw={500}>
+          Back
+        </Text>
+      </Button>
+      <Flex direction="column" gap="lg">
         <VideoModule
           title="University of Washington ASUW Black Student Commission"
           src="Q0rLdrsbAvU"
@@ -25,7 +32,7 @@ export default function VideoPage({}: Props) {
           src="PMSljieUlmE"
         />
         <VideoModule title="PSA 2020 ILC Winner - HOSA" src="iL9gJoI2TR4" />
-      </div>
-    </div>
+      </Flex>
+    </Container>
   );
 }

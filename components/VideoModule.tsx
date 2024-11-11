@@ -10,23 +10,25 @@ interface VideoModuleProps {
 
 export default function VideoModule({ title, src }: VideoModuleProps) {
   return (
-    <Card
-      shadow="sm"
-      padding="lg"
-      radius="md"
-      withBorder
-      className="my-8 max-w-fit mx-auto"
-    >
-      <Title order={2} className="mb-4 font-sans font-ultralight">
+    <Card shadow="sm" padding="lg" radius="md" withBorder>
+      <Title order={2} mb="md">
         {title}
       </Title>
-      <iframe
-        className="w-full aspect-video"
-        title={title}
-        src={'https://youtube.com/embed/' + src}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      ></iframe>
+      <div style={{ position: 'relative', paddingTop: '56.25%' }}>
+        <iframe
+          title={title}
+          src={'https://youtube.com/embed/' + src}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+          }}
+        />
+      </div>
     </Card>
   );
 }
