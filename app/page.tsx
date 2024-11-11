@@ -8,9 +8,9 @@ import HoverLink from '../components/HoverLink';
 export default function Home() {
   const paperBackground = {
     background: `
-      repeating-linear-gradient(transparent, transparent 19px, #f8f8f8 19px, #f8f8f8 20px),
-      repeating-linear-gradient(90deg, transparent, transparent 19px, #f8f8f8 19px, #f8f8f8 20px),
-      linear-gradient(#ffffff, #fcfcfc)
+      repeating-linear-gradient(transparent, transparent 29px, #f8f8f8 29px, #f8f8f8 30px),
+      repeating-linear-gradient(90deg, transparent, transparent 29px, #f8f8f8 29px, #f8f8f8 30px),
+      linear-gradient(#ffffff, #fdfdfd)
     `,
     backgroundSize: '100% 100%, 20px 20px, 20px 20px',
   };
