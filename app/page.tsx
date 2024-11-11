@@ -6,41 +6,17 @@ import Pin from '../components/Pins';
 import HoverLink from '../components/HoverLink';
 
 export default function Home() {
+  const paperBackground = {
+    background: `
+      repeating-linear-gradient(transparent, transparent 19px, #f8f8f8 19px, #f8f8f8 20px),
+      repeating-linear-gradient(90deg, transparent, transparent 19px, #f8f8f8 19px, #f8f8f8 20px),
+      linear-gradient(#ffffff, #fcfcfc)
+    `,
+    backgroundSize: '100% 100%, 20px 20px, 20px 20px',
+  };
+
   return (
     <>
-      {/* <div
-        style={{
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          fontSize: '100px',
-        }}
-      >
-        <span
-          role="img"
-          aria-label="hammer"
-          style={{ left: '20px', transform: 'rotate(40deg)' }}
-        >
-          🔨
-        </span>
-        <span
-          role="img"
-          aria-label="wrench"
-          style={{ right: '50px', transform: 'rotate(55deg)' }}
-        >
-          🔧
-        </span>
-        <span
-          role="img"
-          aria-label="screwdriver"
-          style={{ left: '20px', transform: 'rotate(30deg)' }}
-        >
-          🪛
-        </span>
-      </div> */}
-
       <Container py="xl" style={{ position: 'relative' }}>
         <div style={{ position: 'relative' }}>
           <Pin top="-10px" right="100px" color="#ff4444" />
@@ -49,6 +25,7 @@ export default function Home() {
             radius="md"
             withBorder
             style={{
+              ...paperBackground,
               transform: 'rotate(-3deg)',
               marginBottom: '4rem',
             }}
@@ -56,6 +33,7 @@ export default function Home() {
             <Personal />
           </Card>
         </div>
+
         <div style={{ position: 'relative' }}>
           <Pin top="10px" left="200px" color="#4444ff" />
           <Card
@@ -63,8 +41,10 @@ export default function Home() {
             radius="md"
             withBorder
             style={{
+              ...paperBackground,
               marginBottom: '4rem',
               marginLeft: '4rem',
+              paddingTop: '2rem',
             }}
           >
             <HoverLink href="/stories" text="STORIES" />
@@ -78,6 +58,7 @@ export default function Home() {
             radius="md"
             withBorder
             style={{
+              ...paperBackground,
               transform: 'rotate(2deg)',
               marginLeft: '2rem',
               paddingTop: '4rem',
