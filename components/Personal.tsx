@@ -10,14 +10,11 @@ export default function Personal() {
           JASON ZHANG
         </Text>
         <Text my="md">
-          Computer science student at the University of Washington, I am
-          passionate about using technology to solve real-world problems in
-          various interdisciplinary fields.
+          Hi there! I'm a computer science student at the University of
+          Washington, and I am passionate about using technology to solve
+          real-world problems in various interdisciplinary fields.
         </Text>
-        <Text>
-          Also a photographer and videographer. I love to capture moments and
-          tell stories with digital media.
-        </Text>
+        <Text>I'm also a photographer and videographer for fun!</Text>
       </Box>
     </>
   );
