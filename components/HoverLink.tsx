@@ -1,22 +1,25 @@
-'use client';
-
-import { Text } from '@mantine/core';
-import Link from 'next/link';
 import { useState } from 'react';
+import Link from 'next/link';
+import { Text } from '@mantine/core';
 
-export default function Portfolio() {
+interface HoverLinkProps {
+  href: string;
+  text: string;
+}
+
+export default function HoverLink({ href, text }: HoverLinkProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <Link
-      href="/videos"
+      href={href}
       style={{ textDecoration: 'none' }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <Text size="xl" fw={500} c="dark">
-        {isHovered && '>'} VIDEOS
+        {isHovered && '>'} {text}
       </Text>
     </Link>
   );
-}
+} 

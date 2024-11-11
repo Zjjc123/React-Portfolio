@@ -9,9 +9,7 @@ export default function VideoPage({}: Props) {
   return (
     <Container>
       <Button component={Link} href="/" variant="outline" color="dark" mb="xl">
-        <Text size="lg" fw={500}>
-          Back
-        </Text>
+        Back
       </Button>
       <Flex direction="column" gap="lg">
         <VideoModule
