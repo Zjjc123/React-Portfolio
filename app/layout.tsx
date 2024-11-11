@@ -1,7 +1,7 @@
 import '@mantine/core/styles.css';
 
 import React from 'react';
-import { ColorSchemeScript, MantineProvider } from '@mantine/core';
+import { Box, ColorSchemeScript, MantineProvider } from '@mantine/core';
 
 export const metadata = {
   title: 'Jason Zhang',
@@ -20,7 +20,19 @@ export default function RootLayout({ children }: { children: any }) {
         />
       </head>
       <body>
-        <MantineProvider>{children}</MantineProvider>
+        <MantineProvider>
+          <Box
+            py="xl"
+            style={{
+              backgroundColor: '#f0f0f0',
+              minHeight: '100vh',
+              backgroundImage: 'radial-gradient(#b0b0b0 1px, transparent 1px)',
+              backgroundSize: '20px 20px',
+            }}
+          >
+            {children}
+          </Box>
+        </MantineProvider>
       </body>
     </html>
   );

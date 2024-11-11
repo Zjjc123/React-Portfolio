@@ -7,8 +7,8 @@ type Props = {};
 
 export default function VideoPage({}: Props) {
   return (
-    <Container my="xl">
-      <Button component={Link} href="/" variant="outline" color="dark" my="xl">
+    <Container>
+      <Button component={Link} href="/" variant="outline" color="dark" mb="xl">
         <Text size="lg" fw={500}>
           Back
         </Text>
