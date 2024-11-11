@@ -1,7 +1,6 @@
 'use client';
 
 import { Text, Box, Group, ActionIcon } from '@mantine/core';
-import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 
 export default function Personal() {
   return (
@@ -30,9 +29,7 @@ export default function Personal() {
           radius="xl"
           variant="filled"
           color="blue"
-        >
-          <FaLinkedinIn />
-        </ActionIcon>
+        ></ActionIcon>
         <ActionIcon
           component="a"
           href="https://github.com/zjjc123"
@@ -41,9 +38,7 @@ export default function Personal() {
           size="lg"
           radius="xl"
           variant="filled"
-        >
-          <FaGithub />
-        </ActionIcon>
+        ></ActionIcon>
       </Group>
     </>
   );

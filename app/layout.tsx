@@ -1,30 +1,26 @@
-import './global.css';
-import { Inter } from "next/font/google";
-import { MantineProvider } from '@mantine/core';
+import '@mantine/core/styles.css';
 
-const inter = Inter({ subsets: ['latin'] });
+import React from 'react';
+import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export const metadata = {
+  title: 'Mantine Next.js template',
+  description: 'I am using Mantine with Next.js!',
+};
+
+export default function RootLayout({ children }: { children: any }) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <ColorSchemeScript />
+        <link rel="shortcut icon" href="/favicon.svg" />
         <meta
           name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width"
+          content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
         />
       </head>
       <body>
-        <MantineProvider
-          theme={{
-            fontFamily: inter.style.fontFamily,
-          }}
-        >
-          {children}
-        </MantineProvider>
+        <MantineProvider>{children}</MantineProvider>
       </body>
     </html>
   );

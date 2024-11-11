@@ -1,4 +1,4 @@
-import React from 'react';
+'use client';
 import VideoModule from '../../components/VideoModule';
 
 type Props = {};
