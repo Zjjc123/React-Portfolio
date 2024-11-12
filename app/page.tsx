@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 export default function Home() {
   const paperBackground = {
     background: `
-      repeating-linear-gradient(transparent, transparent 29px, #f8f8f8 29px, #f8f8f8 30px),
+      repeating-linear-gradient(transparent, transparent 29px, #d8d8d8 29px, #d8d8d8 30px),
       repeating-linear-gradient(90deg, transparent, transparent 29px, #f8f8f8 29px, #f8f8f8 30px),
       linear-gradient(#ffffff, #fdfdfd)
     `,
