@@ -19,7 +19,7 @@ export default function Home() {
     <>
       <Container py="xl" style={{ position: 'relative' }}>
         <div style={{ position: 'relative' }}>
-          <Pin top="-10px" right="100px" color="#ff4444" />
+          <Pin top="10px" right="30%" color="red" />
           <Card
             shadow="sm"
             radius="md"
@@ -35,7 +35,7 @@ export default function Home() {
         </div>
 
         <div style={{ position: 'relative' }}>
-          <Pin top="10px" left="200px" color="#4444ff" />
+          <Pin top="10px" left="50%" color="red" />
           <Card
             shadow="sm"
             radius="md"
@@ -52,7 +52,7 @@ export default function Home() {
         </div>
 
         <div style={{ position: 'relative' }}>
-          <Pin top="10px" left="150px" color="#44ff44" />
+          <Pin top="10px" left="40%" color="red" />
           <Card
             shadow="sm"
             radius="md"

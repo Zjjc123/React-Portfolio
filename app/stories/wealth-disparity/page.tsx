@@ -12,6 +12,7 @@ import {
 } from '@mantine/core';
 import { BackButton } from '../../../components/BackButton';
 import { useState } from 'react';
+import Pin from '../../../components/Pins';
 
 const floatUpKeyframes = `
   @keyframes floatUp {
@@ -43,7 +44,8 @@ export default function StoriesPage() {
       <style>{floatUpKeyframes}</style>
       <Container>
         <BackButton href="/stories" />
-        <Card shadow="sm" radius="md" withBorder>
+        <Card shadow="sm" radius="md" withBorder pt="xl">
+          <Pin left="50%" top="10px" color="red" />
           <Text size="xl">
             Imagine you have a check for{' '}
             <Text component="span" fw={700}>
@@ -352,12 +354,12 @@ export default function StoriesPage() {
           </Title>
 
           <Text size="xl" mt="md">
-            If you somehow made a million dollars per hour, it'll take you more
-            than a <b>century</b> to make as much as Elon Musk.
+            If you somehow made a <b>$1 million per hour</b>, it'll take you
+            more than a <b>century</b> to make as much as Elon Musk.
           </Text>
 
           <Text size="xl" mt="md">
-            Don't believe me? Try it yourself!
+            Try it yourself!
           </Text>
           <Box
             mt="xl"
