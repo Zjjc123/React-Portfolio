@@ -8,6 +8,7 @@ import {
   Text,
   Button,
   Title,
+  Blockquote,
 } from '@mantine/core';
 import { BackButton } from '../../../components/BackButton';
 import { useState } from 'react';
@@ -32,7 +33,6 @@ export default function StoriesPage() {
   const addMillion = () => {
     setTotalEarned((prev) => prev + 1_000_000);
     setFloatingNumbers((prev) => [...prev, Date.now()]);
-    // Clean up old floating numbers after animation
     setTimeout(() => {
       setFloatingNumbers((prev) => prev.slice(1));
     }, 2000);
@@ -112,7 +112,11 @@ export default function StoriesPage() {
               MEMO: this is a piece of paper
             </Text>
           </Card>
-          <Text size="xl">
+          <Text size="xl" my="xl">
+            It's just a piece of paper, it's around <b>0.1mm</b> thick. About
+            the width of 2 human hairs.
+          </Text>
+          <Text size="xl" my="xl">
             Now, imagine stacking the checks on top of each other.
           </Text>
 
@@ -143,7 +147,7 @@ export default function StoriesPage() {
                     width: '120px',
                     height: '60px',
                     backgroundColor: '#fff',
-                    border: '1px solid #ddd',
+                    border: '1px solid #000',
                     transform: `translateZ(${i * 4}px)`,
                     boxShadow: '1px 1px 2px rgba(0,0,0,0.1)',
                   }}
@@ -200,7 +204,7 @@ export default function StoriesPage() {
                     width: '120px',
                     height: '60px',
                     backgroundColor: '#fff',
-                    border: '1px solid #ddd',
+                    border: '1px solid #000',
                     transform: `translateZ(${i * 4}px)`,
                     boxShadow: '1px 1px 2px rgba(0,0,0,0.1)',
                   }}
@@ -220,7 +224,7 @@ export default function StoriesPage() {
             mt="xl"
             style={{
               position: 'relative',
-              height: '1000px',
+              height: '1200px',
               width: '100%',
               overflow: 'hidden',
             }}
@@ -229,13 +233,13 @@ export default function StoriesPage() {
               style={{
                 position: 'absolute',
                 left: '50%',
-                top: '75%',
+                top: '90%',
                 transform:
                   'translate(-50%, -50%) rotateX(60deg) rotateZ(45deg)',
                 transformStyle: 'preserve-3d',
               }}
             >
-              {[...Array(250)].map((_, i) => (
+              {[...Array(300)].map((_, i) => (
                 <Box
                   key={i}
                   style={{
@@ -243,7 +247,7 @@ export default function StoriesPage() {
                     width: '120px',
                     height: '60px',
                     backgroundColor: '#fff',
-                    border: '1px solid #ddd',
+                    border: '1px solid #000',
                     transform: `translateZ(${i * 4}px)`,
                     boxShadow: '1px 1px 2px rgba(0,0,0,0.1)',
                   }}
@@ -330,20 +334,21 @@ export default function StoriesPage() {
             </Box>
           </Box>
           <Text size="xl" mt={150} mb="md">
-            To put this in perspective:
-          </Text>
-          <Text size="xl" mt="md">
-            You will most definitely <b>die</b> if you jump off this stack of
-            checks...
+            <b>To put this in perspective:</b> If you jump off this stack of 1
+            million dollar checks... You will most definitely{' '}
+            <Text component="span" c="red" fw={700}>
+              die
+            </Text>{' '}
+            if you try.
           </Text>
 
-          <Title order={3} mt={100}>
-            Another way to put it,
+          <Title order={3} my={25}>
+            Another way to put it:
           </Title>
 
           <Text size="xl" mt="md">
-            If you earn a million dollars every hour, it'll take you more than a{' '}
-            <b>century</b> to earn as much as Elon Musk.
+            If you somehow made a million dollars per hour, it'll take you more
+            than a <b>century</b> to make as much as Elon Musk.
           </Text>
 
           <Text size="xl" mt="md">
@@ -371,17 +376,30 @@ export default function StoriesPage() {
                 +$1,000,000
               </Text>
             ))}
-            <Title order={2} mt="md" style={{ textAlign: 'center' }}>
+            <Text style={{ textAlign: 'center' }}>
+              {totalEarned >= 320_000_000_000 ? (
+                <Text c="green" component="span">
+                  Congratulations! You're now richer than Elon Musk! ↑
+                </Text>
+              ) : (
+                <Text c="red" component="span">
+                  ↓ You're still poorer than Elon Musk...
+                </Text>
+              )}
+            </Text>
+            <Text size="xl" fw={700} mt="md" style={{ textAlign: 'center' }}>
               Total earned: ${totalEarned.toLocaleString()}
-            </Title>
+            </Text>
           </Box>
-          <Button mt="md" onClick={addMillion} color="green">
-            Get $1M
-          </Button>
+          <Center>
+            <Button w="20%" onClick={addMillion} color="green">
+              Add $1,000,000
+            </Button>
+          </Center>
 
-          <Text size="sm" mt="md">
+          <Blockquote mt="md" p="md">
             * This is a demo. No money will be transferred.
-          </Text>
+          </Blockquote>
         </Card>
       </Container>
     </>
