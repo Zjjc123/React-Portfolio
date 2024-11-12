@@ -308,6 +308,59 @@ export default function StoriesPage() {
                   32 meters
                 </Text>
               </Box>
+              <Box
+                style={{
+                  position: 'absolute',
+                  left: '60%',
+                  bottom: '300px',
+                  width: '20px',
+                  height: '30px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                {/* Head */}
+                <Box
+                  style={{
+                    width: '10px',
+                    height: '10px',
+                    borderRadius: '50%',
+                    backgroundColor: '#000',
+                  }}
+                />
+                {/* Body */}
+                <Box
+                  style={{
+                    width: '2px',
+                    height: '14px',
+                    backgroundColor: '#000',
+                  }}
+                />
+                {/* Arms */}
+                <Box
+                  style={{
+                    position: 'absolute',
+                    top: '12px',
+                    width: '16px',
+                    height: '2px',
+                    backgroundColor: '#000',
+                  }}
+                />
+                {/* Legs */}
+                <Box
+                  style={{
+                    position: 'absolute',
+                    bottom: '0',
+                    width: '12px',
+                    height: '8px',
+                    borderBottom: '2px solid #000',
+                    borderLeft: '2px solid #000',
+                    borderRight: '2px solid #000',
+                    transform: 'rotate(180deg)',
+                  }}
+                />
+              </Box>
 
               <Box
                 style={{
