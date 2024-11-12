@@ -44,8 +44,8 @@ export default function StoriesPage() {
       <style>{floatUpKeyframes}</style>
       <Container>
         <BackButton href="/stories" />
-        <Card shadow="sm" radius="md" withBorder pt="xl">
-          <Pin left="50%" top="10px" color="red" />
+        <Card shadow="sm" radius="md" withBorder pt={40}>
+          <Pin left="50%" top="-20px" color="red" />
           <Text size="xl">
             Imagine you have a check for{' '}
             <Text component="span" fw={700}>
