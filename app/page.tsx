@@ -4,6 +4,7 @@ import { Container, Card } from '@mantine/core';
 import Personal from '../components/Personal';
 import Pin from '../components/Pins';
 import HoverLink from '../components/HoverLink';
+import { motion } from 'framer-motion';
 
 export default function Home() {
   const paperBackground = {
@@ -20,7 +21,13 @@ export default function Home() {
       <Container py="xl" style={{ position: 'relative' }}>
         <div style={{ position: 'relative' }}>
           <Pin top="10px" right="30%" color="red" />
-          <Card
+          <motion.div
+            whileHover={{ rotateZ: -2 }}
+            style={{
+              transformOrigin: '70% 50%',
+            }}
+          >
+            <Card
             shadow="sm"
             radius="md"
             withBorder
@@ -30,42 +37,57 @@ export default function Home() {
               marginBottom: '4rem',
             }}
           >
-            <Personal />
-          </Card>
+              <Personal />
+            </Card>
+          </motion.div>
         </div>
 
         <div style={{ position: 'relative' }}>
           <Pin top="10px" left="50%" color="red" />
-          <Card
-            shadow="sm"
-            radius="md"
-            withBorder
+          <motion.div
+            whileHover={{ rotateZ: -2 }}
             style={{
-              ...paperBackground,
-              marginBottom: '4rem',
-              marginLeft: '4rem',
-              paddingTop: '2rem',
+              transformOrigin: 'center',
             }}
           >
-            <HoverLink href="/stories" text="STORIES" />
-          </Card>
+            <Card
+              shadow="sm"
+              radius="md"
+              withBorder
+              style={{
+                ...paperBackground,
+                marginBottom: '4rem',
+                marginLeft: '4rem',
+                paddingTop: '2rem',
+              }}
+            >
+              <HoverLink href="/stories" text="STORIES" />
+            </Card>
+          </motion.div>
         </div>
 
         <div style={{ position: 'relative' }}>
-          <Pin top="10px" left="40%" color="red" />
-          <Card
-            shadow="sm"
-            radius="md"
-            withBorder
+          <Pin top="10px" left="30%" color="red" />
+          <motion.div
+            whileHover={{ rotateZ: -5 }}
             style={{
-              ...paperBackground,
-              transform: 'rotate(2deg)',
-              marginLeft: '2rem',
-              paddingTop: '4rem',
+              transformOrigin: '30% 50%',
             }}
           >
-            <HoverLink href="/videos" text="VIDEOS" />
-          </Card>
+            <Card
+              shadow="sm"
+              radius="md"
+              withBorder
+              style={{
+                ...paperBackground,
+                transform: 'rotate(2deg)',
+                marginLeft: '2rem',
+                paddingTop: '4rem',
+              }}
+            >
+              <HoverLink href="/videos" text="VIDEOS" />
+            </Card>
+          </motion.div>
         </div>
       </Container>
     </>
