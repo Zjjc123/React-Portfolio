@@ -1,8 +1,8 @@
 'use client';
-import { Button, Container, Flex, Text } from '@mantine/core';
+import { Container, Flex } from '@mantine/core';
 import VideoModule from '../../components/VideoModule';
-import Link from 'next/link';
 import { BackButton } from '../../components/BackButton';
+import PageAnimationWrapper from '../../components/PageAnimationWrapper';
 
 type Props = {};
 

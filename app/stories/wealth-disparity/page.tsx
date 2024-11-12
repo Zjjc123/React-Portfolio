@@ -42,7 +42,6 @@ export default function StoriesPage() {
 
   return (
     <>
-      <style>{floatUpKeyframes}</style>
       <Container>
         <BackButton href="/stories" />
         <Card shadow="sm" radius="md" withBorder pt={40}>

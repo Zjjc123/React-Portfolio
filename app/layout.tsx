@@ -2,6 +2,7 @@ import '@mantine/core/styles.css';
 
 import React from 'react';
 import { Box, ColorSchemeScript, MantineProvider } from '@mantine/core';
+import PageAnimatePresence from '../components/PageAnimatePresence';
 
 export const metadata = {
   title: 'Jason Zhang',
@@ -20,19 +21,22 @@ export default function RootLayout({ children }: { children: any }) {
         />
       </head>
       <body>
-        <MantineProvider>
-          <Box
-            py="xl"
-            style={{
-              backgroundColor: '#f0f0f0',
-              minHeight: '100vh',
-              backgroundImage: 'radial-gradient(#a0a0a0 1px, transparent 1px)',
-              backgroundSize: '20px 20px',
-            }}
-          >
-            {children}
-          </Box>
-        </MantineProvider>
+        <PageAnimatePresence>
+          <MantineProvider>
+            <Box
+              py="xl"
+              style={{
+                backgroundColor: '#f0f0f0',
+                minHeight: '100vh',
+                backgroundImage:
+                  'radial-gradient(#a0a0a0 1px, transparent 1px)',
+                backgroundSize: '20px 20px',
+              }}
+            >
+              {children}
+            </Box>
+          </MantineProvider>
+        </PageAnimatePresence>
       </body>
     </html>
   );

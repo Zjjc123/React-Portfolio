@@ -5,6 +5,7 @@ import Personal from '../components/Personal';
 import Pin from '../components/Pins';
 import HoverLink from '../components/HoverLink';
 import { motion } from 'framer-motion';
+import PageAnimationWrapper from '../components/PageAnimationWrapper';
 
 export default function Home() {
   const paperBackground = {
@@ -17,7 +18,7 @@ export default function Home() {
   };
 
   return (
-    <>
+    <PageAnimationWrapper>
       <Container py="xl">
         <div style={{ position: 'relative' }}>
           <Pin top="10px" right="30%" color="red" />
@@ -92,6 +93,6 @@ export default function Home() {
           </motion.div>
         </div>
       </Container>
-    </>
+    </PageAnimationWrapper>
   );
 }
