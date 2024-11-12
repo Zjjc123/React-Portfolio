@@ -13,6 +13,7 @@ import {
 import { BackButton } from '../../../components/BackButton';
 import { useState } from 'react';
 import Pin from '../../../components/Pins';
+import { motion } from 'framer-motion';
 
 const floatUpKeyframes = `
   @keyframes floatUp {
@@ -142,18 +143,27 @@ export default function StoriesPage() {
               }}
             >
               {[...Array(30)].map((_, i) => (
-                <Box
+                <motion.div
                   key={i}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                  viewport={{ once: true }}
                   style={{
-                    position: 'absolute',
-                    width: '120px',
-                    height: '60px',
-                    backgroundColor: '#fff',
-                    border: '1px solid #000',
                     transform: `translateZ(${i * 4}px)`,
-                    boxShadow: '1px 1px 2px rgba(0,0,0,0.1)',
                   }}
-                />
+                >
+                  <Box
+                    style={{
+                      position: 'absolute',
+                      width: '120px',
+                      height: '60px',
+                      backgroundColor: '#fff',
+                      border: '1px solid #000',
+                      boxShadow: '1px 1px 2px rgba(0,0,0,0.1)',
+                    }}
+                  />
+                </motion.div>
               ))}
             </Box>
 
@@ -394,7 +404,12 @@ export default function StoriesPage() {
                 </Text>
               )}
             </Text>
-            <Text size="xl" fw={700} mt="md" style={{ textAlign: 'center' }}>
+            <Text
+              size={'2rem'}
+              fw={700}
+              my="md"
+              style={{ textAlign: 'center' }}
+            >
               Total earned: ${totalEarned.toLocaleString()}
             </Text>
           </Box>
