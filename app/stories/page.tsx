@@ -9,8 +9,8 @@ export default function StoriesPage() {
       <BackButton href="/" />
       <Card shadow="sm" radius="md" withBorder>
         <HoverLink
-          href="/stories/elon-money"
-          text="💰 How much money does Elon Musk have?"
+          href="/stories/wealth-disparity"
+          text="💰 How rich is the top 1% exactly...?"
         />
       </Card>
     </Container>
