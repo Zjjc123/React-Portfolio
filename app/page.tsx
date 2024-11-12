@@ -25,21 +25,19 @@ export default function Home() {
             whileHover={{ rotateZ: -2 }}
             style={{
               transformOrigin: '70% 50%',
-              display: 'flex',
-              justifyContent: 'flex-end',
-            }}
-          >
-            <Card
-            shadow="sm"
-            radius="md"
-            withBorder
-            style={{
-              ...paperBackground,
-              transform: 'rotate(-3deg)',
-              marginBottom: '4rem',
               width: '85%',
             }}
           >
+            <Card
+              shadow="sm"
+              radius="md"
+              withBorder
+              style={{
+                ...paperBackground,
+                transform: 'rotate(-3deg)',
+                marginBottom: '4rem',
+              }}
+            >
               <Personal />
             </Card>
           </motion.div>
@@ -74,7 +72,8 @@ export default function Home() {
           <motion.div
             whileHover={{ rotateZ: -5 }}
             style={{
-              transformOrigin: '30% 50%',
+              width: '50%',
+              transformOrigin: '70% 20%',
             }}
           >
             <Card
@@ -86,7 +85,6 @@ export default function Home() {
                 transform: 'rotate(2deg)',
                 marginLeft: '2rem',
                 paddingTop: '4rem',
-                width: '50%',
               }}
             >
               <HoverLink href="/videos" text="VIDEOS" />
