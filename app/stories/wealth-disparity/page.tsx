@@ -258,9 +258,14 @@ export default function StoriesPage() {
           <Text size="xl" mt="xl">
             Until you have the net worth of the world's richest man{' '}
             <Text component="span" fw={700}>
-              Elon Musk
+              Elon Musk:
             </Text>
           </Text>
+          <Center>
+            <Text size={'3rem'} my="lg">
+              $320 billion
+            </Text>
+          </Center>
           <Box mt="xl">
             <Text size="xl" mb="md">
               It'll reach the height of a <b>10-story</b> building.
