@@ -18,13 +18,15 @@ export default function Home() {
 
   return (
     <>
-      <Container py="xl" style={{ position: 'relative' }}>
+      <Container py="xl">
         <div style={{ position: 'relative' }}>
           <Pin top="10px" right="30%" color="red" />
           <motion.div
             whileHover={{ rotateZ: -2 }}
             style={{
               transformOrigin: '70% 50%',
+              display: 'flex',
+              justifyContent: 'flex-end',
             }}
           >
             <Card
@@ -35,6 +37,7 @@ export default function Home() {
               ...paperBackground,
               transform: 'rotate(-3deg)',
               marginBottom: '4rem',
+              width: '85%',
             }}
           >
               <Personal />
@@ -83,6 +86,7 @@ export default function Home() {
                 transform: 'rotate(2deg)',
                 marginLeft: '2rem',
                 paddingTop: '4rem',
+                width: '50%',
               }}
             >
               <HoverLink href="/videos" text="VIDEOS" />
