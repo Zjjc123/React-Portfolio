@@ -263,9 +263,9 @@ export default function StoriesPage() {
               Elon Musk:
             </Text>
           </Text>
-          <Center>
-            <Text size={'3rem'} my="lg">
-              $320 billion
+          <Center mt="lg">
+            <Text size={'3rem'} my="lg" fw={800}>
+              $320 Billion
             </Text>
           </Center>
           <Box mt="xl">
