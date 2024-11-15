@@ -76,24 +76,30 @@ export function Person() {
     setIsDragging(true);
     setVelocity({ x: 0, y: 0 });
 
-    const initialX = e.clientX;
-    const initialY = e.clientY;
-    const startX = position.x;
-    const startY = position.y;
+    let lastX = e.clientX;
+    let lastY = e.clientY;
 
     const handleDrag = (e: MouseEvent) => {
-      setPosition({
-        x: startX + (e.clientX - initialX),
-        y: startY - (e.clientY - initialY),
-      });
-      setRotation(Math.sin(Date.now() / 200) * 30);
+      const deltaX = e.clientX - lastX;
+      const deltaY = e.clientY - lastY;
+      setPosition((prev) => ({
+        x: prev.x + deltaX,
+        y: prev.y - deltaY,
+      }));
+
+      const swayAmount = deltaX * 7;
+      const returnToCenter = swayAmount * Math.exp(-Math.abs(deltaX) * 0.01);
+      setRotation(returnToCenter);
+
+      lastX = e.clientX;
+      lastY = e.clientY;
     };
 
-    const handleDragEnd = () => {
+    const handleDragEnd = (e: MouseEvent) => {
       setIsDragging(false);
       setVelocity({
-        x: (e.clientX - initialX) * 0.1,
-        y: -(e.clientY - initialY) * 0.1,
+        x: (e.clientX - lastX) * 0.1,
+        y: -(e.clientY - lastY) * 0.1,
       });
       document.removeEventListener('mousemove', handleDrag);
       document.removeEventListener('mouseup', handleDragEnd);

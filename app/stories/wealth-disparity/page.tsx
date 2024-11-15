@@ -196,10 +196,14 @@ export default function StoriesPage() {
               </Text>{' '}
               if you try.
             </Text>
-            <Text size="xl" mt="md" style={{ textAlign: 'center' }}>
+
+            <Blockquote mt="md" p="md" color="red">
+              Try dragging and releasing the person to see what happens...
+            </Blockquote>
+            {/* <Text size="xl" mt="md" style={{ textAlign: 'center' }}>
               If you somehow made a <b>$1 million per hour</b>, it'll take you
               more than a <b>century</b> to make as much as Elon Musk.
-            </Text>
+            </Text> */}
           </section>
 
           <Container
