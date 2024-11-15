@@ -307,6 +307,7 @@ export default function StoriesPage() {
                       top: '50%',
                       transform: 'translateY(-50%)',
                       whiteSpace: 'nowrap',
+                      userSelect: 'none',
                     }}
                   >
                     32 meters
@@ -362,24 +363,26 @@ export default function StoriesPage() {
                       top: '50%',
                       transform: 'translateY(-50%)',
                       whiteSpace: 'nowrap',
+                      userSelect: 'none',
                     }}
                   >
                     10 story building
                   </Text>
                 </Box>
-              <Box
-                className="ground death"
-                style={{
-                  position: 'absolute',
-                  left: '25%',
-                  bottom: 0,
-                  width: '50%',
-                  height: '20px',
-                  backgroundColor: '#495057',
-                  borderTop: '2px solid #343a40',
-                  backgroundImage: 'linear-gradient(90deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.1) 100%)',
-                }}
-              />
+                <Box
+                  className="ground death"
+                  style={{
+                    position: 'absolute',
+                    left: '25%',
+                    bottom: 0,
+                    width: '50%',
+                    height: '20px',
+                    backgroundColor: '#495057',
+                    borderTop: '2px solid #343a40',
+                    backgroundImage:
+                      'linear-gradient(90deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.1) 100%)',
+                  }}
+                />
               </Box>
             )}
             {sectionNumber === 6 && (
