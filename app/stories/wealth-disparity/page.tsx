@@ -13,6 +13,11 @@ import { BackButton } from '../../../components/BackButton';
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import SpendPage from './spend';
+import { CoffeeComparison } from './components/CoffeeComparison';
+import { MoneyScale } from './components/MoneyScale';
+import { MillionDollarCheck } from './components/check';
+import { CheckStack } from './components/CheckStack';
+import { Person } from './components/Person';
 
 const textContainer = {
   display: 'flex',
@@ -178,7 +183,11 @@ export default function StoriesPage() {
               It'll reach the height of a <b>10-story</b> building.
             </Text>
           </section>
-          <section ref={updateSectionRefs} id="5" style={textContainer}>
+          <section
+            ref={updateSectionRefs}
+            id="5"
+            style={{ ...textContainer, paddingBottom: '200px' }}
+          >
             <Text size="xl" mb="md" style={{ textAlign: 'center' }}>
               <b>To put this in perspective:</b> If you jump off this stack of 1
               million dollar checks... You will most definitely{' '}
@@ -235,48 +244,8 @@ export default function StoriesPage() {
               padding: '2rem',
             }}
           >
-            {sectionNumber === 0 && (
-              <Box
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  gap: '2rem',
-                  fontSize: '4rem',
-                  margin: '2rem 0',
-                }}
-              >
-                <Text size="2rem" fw={700} component="span" c="red">
-                  ☕ $10
-                </Text>
-                <Text size="2rem" fw={700} component="span" c="green">
-                  ☕ $3
-                </Text>
-              </Box>
-            )}
-            {sectionNumber === 1 && (
-              <Box
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  flexDirection: 'column',
-                  gap: '2rem',
-                  fontSize: '4rem',
-                  margin: '2rem 0',
-                }}
-              >
-                <Text size="2rem" fw={700} component="span">
-                  💵 $1,000
-                </Text>
-                <Text size="2rem" fw={700} component="span">
-                  💰 $1,000,000
-                </Text>
-                <Text size="2rem" fw={700} component="span">
-                  🏦 $1,000,000,000
-                </Text>
-              </Box>
-            )}
+            {sectionNumber === 0 && <CoffeeComparison />}
+            {sectionNumber === 1 && <MoneyScale />}
             {sectionNumber === 2 && (
               <Text size="xl" style={{ textAlign: 'center' }}>
                 Text
@@ -301,116 +270,10 @@ export default function StoriesPage() {
                 }}
                 viewport={{ once: true }}
               >
-                <Card
-                  mt="md"
-                  my="xl"
-                  padding="xl"
-                  radius="md"
-                  withBorder
-                  w="30vw"
-                  style={{
-                    backgroundColor: '#f8f9fa',
-                    fontFamily: 'serif',
-                    position: 'relative',
-                    minHeight: '200px',
-                  }}
-                >
-                  <Text
-                    size="sm"
-                    c="dimmed"
-                    style={{
-                      position: 'absolute',
-                      top: '20px',
-                      right: '20px',
-                    }}
-                  >
-                    No. 12345
-                  </Text>
-
-                  <Text
-                    size="xl"
-                    fw={700}
-                    style={{
-                      position: 'absolute',
-                      top: '50%',
-                      left: '50%',
-                      transform: 'translate(-50%, -50%)',
-                      fontSize: '2.5rem',
-                    }}
-                  >
-                    $1,000,000.00
-                  </Text>
-
-                  <Text
-                    size="sm"
-                    style={{
-                      position: 'absolute',
-                      bottom: '40px',
-                      left: '20px',
-                    }}
-                  >
-                    PAY TO THE ORDER OF ___________________________
-                  </Text>
-
-                  <Text
-                    size="sm"
-                    style={{
-                      position: 'absolute',
-                      bottom: '20px',
-                      right: '20px',
-                      fontStyle: 'italic',
-                    }}
-                  >
-                    MEMO: this is a piece of paper
-                  </Text>
-                </Card>
+                <MillionDollarCheck />
               </motion.div>
             )}
-            {sectionNumber === 4 && (
-              <Box
-                style={{
-                  position: 'relative',
-                  height: '500px',
-                  width: '100%',
-                  overflow: 'hidden',
-                }}
-              >
-                <Box
-                  style={{
-                    position: 'absolute',
-                    left: '50%',
-                    top: '70%',
-                    transform:
-                      'translate(-50%, -50%) rotateX(60deg) rotateZ(45deg)',
-                    transformStyle: 'preserve-3d',
-                  }}
-                >
-                  {[...Array(100)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ delay: i * 0.05, duration: 1 }}
-                      viewport={{ once: true }}
-                      style={{
-                        transform: `translateZ(${i * 4}px)`,
-                      }}
-                    >
-                      <Box
-                        style={{
-                          position: 'absolute',
-                          width: '120px',
-                          height: '60px',
-                          backgroundColor: '#fff',
-                          border: '1px solid #000',
-                          boxShadow: '1px 1px 2px rgba(0,0,0,0.1)',
-                        }}
-                      />
-                    </motion.div>
-                  ))}
-                </Box>
-              </Box>
-            )}
+            {sectionNumber === 4 && <CheckStack />}
             {sectionNumber === 5 && (
               <Box
                 style={{
@@ -419,13 +282,16 @@ export default function StoriesPage() {
                   width: '100%',
                 }}
               >
-                <Box
+                <motion.div
+                  initial={{ height: 0 }}
+                  whileInView={{ height: '350px' }}
+                  transition={{ duration: 1 }}
+                  viewport={{ once: true }}
                   style={{
                     position: 'absolute',
-                    left: '20%',
+                    left: '40%',
                     bottom: 0,
                     width: '4px',
-                    height: '300px',
                     backgroundColor: '#228be6',
                   }}
                 >
@@ -441,86 +307,48 @@ export default function StoriesPage() {
                   >
                     32 meters
                   </Text>
-                </Box>
+                </motion.div>
+                <Person />
                 <Box
-                  style={{
-                    position: 'absolute',
-                    left: '60%',
-                    bottom: '300px',
-                    width: '20px',
-                    height: '30px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                  }}
-                >
-                  {/* Head */}
-                  <Box
-                    style={{
-                      width: '10px',
-                      height: '10px',
-                      borderRadius: '50%',
-                      backgroundColor: '#000',
-                    }}
-                  />
-                  {/* Body */}
-                  <Box
-                    style={{
-                      width: '2px',
-                      height: '14px',
-                      backgroundColor: '#000',
-                    }}
-                  />
-                  {/* Arms */}
-                  <Box
-                    style={{
-                      position: 'absolute',
-                      top: '12px',
-                      width: '16px',
-                      height: '2px',
-                      backgroundColor: '#000',
-                    }}
-                  />
-                  {/* Legs */}
-                  <Box
-                    style={{
-                      position: 'absolute',
-                      bottom: '0',
-                      width: '12px',
-                      height: '8px',
-                      borderBottom: '2px solid #000',
-                      borderLeft: '2px solid #000',
-                      borderRight: '2px solid #000',
-                      transform: 'rotate(180deg)',
-                    }}
-                  />
-                </Box>
-
-                <Box
+                  className="ground"
                   style={{
                     position: 'absolute',
                     left: '60%',
                     bottom: 0,
                     width: '100px',
-                    height: '300px',
-                    backgroundColor: '#868e96',
+                    height: '350px',
                     display: 'flex',
                     flexDirection: 'column-reverse',
                   }}
                 >
                   {Array.from({ length: 10 }).map((_, i) => (
-                    <Box
+                    <motion.div
                       key={i}
-                      style={{
-                        position: 'relative',
-                        height: '10%',
-                        width: '100%',
-                        backgroundColor: '#868e96',
-                        borderTop: '1px solid #495057',
-                        borderLeft: '8px solid #495057',
-                        borderRight: '8px solid #adb5bd',
+                      initial={{ scaleY: 0, y: -10 }}
+                      whileInView={{ scaleY: 1, y: 0 }}
+                      transition={{
+                        duration: 0.3,
+                        delay: i * 0.1,
+                        ease: 'easeOut',
                       }}
-                    />
+                      style={{ height: '10%' }}
+                    >
+                      <Box
+                        style={{
+                          position: 'relative',
+                          height: '100%',
+                          width: '100%',
+                          backgroundColor: '#868e96',
+                          borderTop: '1px solid #495057',
+                          borderLeft: '8px solid #495057',
+                          borderRight: '8px solid #adb5bd',
+                          transformOrigin: 'bottom',
+                          backgroundImage:
+                            'linear-gradient(90deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.1) 100%)',
+                          backgroundSize: '100% 100%',
+                        }}
+                      />
+                    </motion.div>
                   ))}
                   <Text
                     size="sm"
@@ -535,6 +363,19 @@ export default function StoriesPage() {
                     10 story building
                   </Text>
                 </Box>
+              <Box
+                className="ground death"
+                style={{
+                  position: 'absolute',
+                  left: '25%',
+                  bottom: 0,
+                  width: '50%',
+                  height: '20px',
+                  backgroundColor: '#495057',
+                  borderTop: '2px solid #343a40',
+                  backgroundImage: 'linear-gradient(90deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.1) 100%)',
+                }}
+              />
               </Box>
             )}
             {sectionNumber === 6 && (
