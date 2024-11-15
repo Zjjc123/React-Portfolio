@@ -1,6 +1,6 @@
 'use client';
 
-import { Container, Card } from '@mantine/core';
+import { Container, Card, Box } from '@mantine/core';
 import Personal from '../components/Personal';
 import Pin from '../components/Pins';
 import HoverLink from '../components/HoverLink';
@@ -19,8 +19,17 @@ export default function Home() {
 
   return (
     <PageAnimationWrapper>
-      <Container py="xl">
-        <div style={{ position: 'relative' }}>
+      <Box
+        py="xl"
+        style={{
+          backgroundColor: '#f0f0f0',
+          minHeight: '100vh',
+          backgroundImage: 'radial-gradient(#a0a0a0 1px, transparent 1px)',
+          backgroundSize: '20px 20px',
+        }}
+      >
+        <Container>
+          <div style={{ position: 'relative' }}>
           <Pin top="10px" right="30%" color="red" />
           <motion.div
             whileHover={{ rotateZ: -2 }}
@@ -90,9 +99,10 @@ export default function Home() {
             >
               <HoverLink href="/videos" text="VIDEOS" />
             </Card>
-          </motion.div>
-        </div>
-      </Container>
+            </motion.div>
+          </div>
+        </Container>
+      </Box>
     </PageAnimationWrapper>
   );
 }

@@ -1,8 +1,8 @@
 import '@mantine/core/styles.css';
 
 import React from 'react';
-import { Box, ColorSchemeScript, MantineProvider } from '@mantine/core';
-import PageAnimatePresence from '../components/PageAnimatePresence';
+import { ColorSchemeScript, MantineProvider } from '@mantine/core';
+import PageAnimatePresence from '../../../components/PageAnimatePresence';
 
 export const metadata = {
   title: 'Jason Zhang',
@@ -22,7 +22,9 @@ export default function RootLayout({ children }: { children: any }) {
       </head>
       <body>
         <PageAnimatePresence>
-          <MantineProvider>{children}</MantineProvider>
+          <MantineProvider>
+            {children}
+          </MantineProvider>
         </PageAnimatePresence>
       </body>
     </html>
