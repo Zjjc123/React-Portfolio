@@ -219,12 +219,30 @@ const items = [
     price: 30_000,
     image: '💒',
     description: 'A wedding',
-  }, 
+  },
   {
     name: 'Camera',
     price: 5_000,
     image: '📷',
     description: 'A high-end camera',
+  },
+  {
+    name: 'Shoes',
+    price: 60,
+    image: '👟',
+    description: 'A pair of shoes',
+  },
+  {
+    name: 'Dinner',
+    price: 90,
+    image: '🍽️',
+    description: 'A fancy dinner for two',
+  },
+  {
+    name: 'Franchise',
+    price: 400_000,
+    image: '🏢',
+    description: 'Initial investment for a franchise',
   },
 ];
 
@@ -233,7 +251,7 @@ export default function SpendPage() {
   const [inventory, setInventory] = useState<Record<string, number>>({});
 
   return (
-    <Card mt="xl" shadow="sm" radius="md" withBorder>
+    <>
       <Text fw={700} size="xl" mt="sm" style={{ textAlign: 'center' }}>
         What could you buy with Elon's fortune?
       </Text>
@@ -292,6 +310,6 @@ export default function SpendPage() {
             </Box>
           ))}
       </Box>
-    </Card>
+    </>
   );
 }

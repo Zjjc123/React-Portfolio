@@ -44,7 +44,7 @@ export default function StoriesPage() {
   return (
     <>
       <style>{floatUpKeyframes}</style>
-      <Container>
+      <Container size="lg">
         <BackButton href="/stories" />
         <Card shadow="sm" radius="md" withBorder pt={40}>
           <Pin left="50%" top="-20px" color="red" />
