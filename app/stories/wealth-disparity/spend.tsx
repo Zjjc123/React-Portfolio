@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Card, Text, Box, Button } from '@mantine/core';
+import { Text, Box, Button, Flex } from '@mantine/core';
 
 const items = [
   {
@@ -260,14 +260,7 @@ export default function SpendPage() {
         ${totalEarned.toLocaleString()}
       </Text>
 
-      <Box
-        mt="xl"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-          gap: '1rem',
-        }}
-      >
+      <Flex mt="xl" wrap="wrap" gap="md">
         {items
           .sort((a, b) => a.price - b.price)
           .map((item) => (
@@ -277,14 +270,15 @@ export default function SpendPage() {
               style={{
                 border: '1px solid #dee2e6',
                 borderRadius: '8px',
+                width: '200px',
               }}
             >
               <Box>
-                <Text size="xl">
+                <Text size="md">
                   {item.image} {item.name}
                   {inventory[item.name] ? ` (${inventory[item.name]})` : ''}
                 </Text>
-                <Text size="sm" c="dimmed">
+                <Text size="xs" c="dimmed">
                   {item.description}
                 </Text>
               </Box>
@@ -309,7 +303,7 @@ export default function SpendPage() {
               </Box>
             </Box>
           ))}
-      </Box>
+      </Flex>
     </>
   );
 }

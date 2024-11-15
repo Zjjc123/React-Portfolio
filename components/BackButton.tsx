@@ -4,9 +4,10 @@ import Link from 'next/link';
 
 interface BackButtonProps {
   href: string;
+  style?: React.CSSProperties;
 }
 
-export function BackButton({ href }: BackButtonProps) {
+export function BackButton({ href, style }: BackButtonProps) {
   return (
     <Button
       component={Link}
@@ -14,6 +15,7 @@ export function BackButton({ href }: BackButtonProps) {
       color="gray"
       mb="lg"
       variant="transparent"
+      style={style}
     >
       <IconArrowLeft size={32} />
     </Button>

@@ -6,9 +6,7 @@ import {
   Center,
   Text,
   Button,
-  Title,
   Blockquote,
-  Flex,
   Container,
 } from '@mantine/core';
 import { BackButton } from '../../../components/BackButton';
@@ -16,56 +14,15 @@ import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import SpendPage from './spend';
 
-const customStyles = `
-  .left {
-    float: left;
-    top: 0;
-    width: 30%;
-  }
-
-  .right {
-    position: fixed;
-    float: right;
-    top: 0;
-    left: 30%;
-    width: 70%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    transition: transform 0.3s ease-out;
-    transform: translateX(${(props) => (props.shouldExit ? '100%' : '0')});
-  }
-
-  .graph-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    padding: 2rem;
-  }
-
-  .text-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-    margin: auto 0;
-  }
-
-  @keyframes floatUp {
-    0% {
-      opacity: 1;
-      bottom: 0%;
-    }
-    100% {
-      opacity: 0;
-      bottom: 100%;
-    }
-  }
-`;
+const textContainer = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '100vh',
+  textAlign: 'center',
+  margin: 'auto 0',
+} as const;
 
 export default function StoriesPage() {
   const [totalEarned, setTotalEarned] = useState(0);
@@ -77,7 +34,7 @@ export default function StoriesPage() {
   );
   const sectionRefs = useRef([]);
 
-  const [shouldExitRight, setShouldExitRight] = useState(false);
+  const [allSectionsPassed, setAllSectionsPassed] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -101,6 +58,8 @@ export default function StoriesPage() {
           }
         });
 
+        const allPassed = newIntersectingSections.length === 0;
+        setAllSectionsPassed(allPassed);
         setIntersectingSections(newIntersectingSections);
       },
       {
@@ -141,19 +100,27 @@ export default function StoriesPage() {
 
   return (
     <>
+      <BackButton
+        style={{ position: 'fixed', top: 10, left: 0 }}
+        href="/stories"
+      />
       <Container bg="white" style={{ minHeight: '100vh' }}>
-        <style>{customStyles}</style>
-        <BackButton href="/stories" />
-
-        <div className="left">
-          <section className="text-container" ref={updateSectionRefs} id="0">
+        <div
+          className={allSectionsPassed ? 'full-width' : ''}
+          style={{
+            float: 'left',
+            top: 0,
+            width: '30%',
+          }}
+        >
+          <section ref={updateSectionRefs} id="0" style={textContainer}>
             <Text size="xl" mb="md" style={{ textAlign: 'center' }}>
               Most of the time, we think we have a good understanding of money.
               In 2024, a 10 dollar coffee would be outrageous and a 3 dollar
               coffee would seem like a good deal.
             </Text>
           </section>
-          <section className="text-container" ref={updateSectionRefs} id="1">
+          <section ref={updateSectionRefs} id="1" style={textContainer}>
             <Text size="xl" my={500} style={{ textAlign: 'center' }}>
               We have a very good understanding of the value of money in our
               daily lives.
@@ -163,7 +130,7 @@ export default function StoriesPage() {
               thousands of million dollars, we start to lose our sense of scale.
             </Text>
           </section>
-          <section className="text-container" ref={updateSectionRefs} id="2">
+          <section ref={updateSectionRefs} id="2" style={textContainer}>
             <Text size="xl" mb="md" style={{ textAlign: 'center' }}>
               But when it comes to the net worth of the world's richest people,
               we think we understand it.
@@ -172,7 +139,7 @@ export default function StoriesPage() {
               Do we really?
             </Text>
           </section>
-          <section className="text-container" ref={updateSectionRefs} id="3">
+          <section ref={updateSectionRefs} id="3" style={textContainer}>
             <Text size="xl" mt="xl" style={{ textAlign: 'center' }}>
               Imagine you have a check for{' '}
               <Text component="span" fw={700}>
@@ -187,7 +154,7 @@ export default function StoriesPage() {
               Now, imagine stacking the checks on top of each other.
             </Text>
           </section>
-          <section className="text-container" ref={updateSectionRefs} id="4">
+          <section ref={updateSectionRefs} id="4" style={textContainer}>
             <Text size="xl" mb="md" style={{ textAlign: 'center' }}>
               Keep stacking those million dollar checks...
             </Text>
@@ -209,7 +176,7 @@ export default function StoriesPage() {
               It'll reach the height of a <b>10-story</b> building.
             </Text>
           </section>
-          <section className="text-container" ref={updateSectionRefs} id="5">
+          <section ref={updateSectionRefs} id="5" style={textContainer}>
             <Text size="xl" mb="md" style={{ textAlign: 'center' }}>
               <b>To put this in perspective:</b> If you jump off this stack of 1
               million dollar checks... You will most definitely{' '}
@@ -223,16 +190,49 @@ export default function StoriesPage() {
               more than a <b>century</b> to make as much as Elon Musk.
             </Text>
           </section>
+
+          <Container
+            style={{
+              width: '100vw',
+              position: 'relative',
+            }}
+            mt={150}
+          >
+            <Text size="xl" mt="xl" style={{ textAlign: 'center' }}>
+              To make it even clearer, let's see how you would spend Elon Musk's
+              net worth.
+            </Text>
+
+            <SpendPage />
+          </Container>
         </div>
 
         <div
           className="right"
           style={{
-            transform: shouldExitRight ? 'translateX(100%)' : 'translateX(0)',
-            transition: 'transform 0.3s ease-out',
+            position: 'fixed',
+            float: 'right',
+            top: 0,
+            left: '30%',
+            width: '70%',
+            height: '100vh',
+            display: 'flex',
+            justifyContent: 'center',
+            transition: 'transform 0.3s ease-out, opacity 0.3s ease-out',
+            opacity: allSectionsPassed ? '0' : '1',
+            pointerEvents: allSectionsPassed ? 'none' : 'auto',
           }}
         >
-          <div className="graph-container">
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '100%',
+              height: '100%',
+              padding: '2rem',
+            }}
+          >
             {sectionNumber === 0 && (
               <Box
                 style={{
@@ -601,12 +601,6 @@ export default function StoriesPage() {
           </div>
         </div>
       </Container>
-
-      {/* <Text size="xl" mt="xl" style={{ textAlign: 'center' }}>
-        To make it even clearer, let's see how you would spend Elon Musk's net
-        worth.
-      </Text>
-      <SpendPage /> */}
     </>
   );
 }
