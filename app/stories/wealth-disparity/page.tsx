@@ -14,6 +14,7 @@ import { BackButton } from '../../../components/BackButton';
 import { useState } from 'react';
 import Pin from '../../../components/Pins';
 import { motion } from 'framer-motion';
+import SpendPage from './spend';
 
 const floatUpKeyframes = `
   @keyframes floatUp {
@@ -47,79 +48,98 @@ export default function StoriesPage() {
         <BackButton href="/stories" />
         <Card shadow="sm" radius="md" withBorder pt={40}>
           <Pin left="50%" top="-20px" color="red" />
-          <Text size="xl">
+          <Text size="xl" my="xl" style={{ textAlign: 'center' }}>
             Imagine you have a check for{' '}
             <Text component="span" fw={700}>
               a million dollars.
             </Text>
           </Text>
-          <Card
-            mt="md"
-            my="xl"
-            padding="xl"
-            radius="md"
-            withBorder
-            style={{
-              backgroundColor: '#f8f9fa',
-              fontFamily: 'serif',
-              position: 'relative',
-              minHeight: '200px',
+          <motion.div
+            initial={{ rotateX: -90, opacity: 0 }}
+            whileInView={{
+              rotateX: 0,
+              opacity: 1,
+              rotate: [-1, 1, -1],
             }}
+            transition={{
+              duration: 1.4,
+              type: 'spring',
+              rotate: {
+                repeat: Infinity,
+                duration: 1.4,
+                ease: 'easeInOut',
+              },
+            }}
+            viewport={{ once: true }}
           >
-            <Text
-              size="sm"
-              c="dimmed"
+            <Card
+              mt="md"
+              my="xl"
+              padding="xl"
+              radius="md"
+              withBorder
               style={{
-                position: 'absolute',
-                top: '20px',
-                right: '20px',
+                backgroundColor: '#f8f9fa',
+                fontFamily: 'serif',
+                position: 'relative',
+                minHeight: '200px',
               }}
             >
-              No. 12345
-            </Text>
+              <Text
+                size="sm"
+                c="dimmed"
+                style={{
+                  position: 'absolute',
+                  top: '20px',
+                  right: '20px',
+                }}
+              >
+                No. 12345
+              </Text>
 
-            <Text
-              size="xl"
-              fw={700}
-              style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                fontSize: '2.5rem',
-              }}
-            >
-              $1,000,000.00
-            </Text>
+              <Text
+                size="xl"
+                fw={700}
+                style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  fontSize: '2.5rem',
+                }}
+              >
+                $1,000,000.00
+              </Text>
 
-            <Text
-              size="sm"
-              style={{
-                position: 'absolute',
-                bottom: '40px',
-                left: '20px',
-              }}
-            >
-              PAY TO THE ORDER OF ___________________________
-            </Text>
+              <Text
+                size="sm"
+                style={{
+                  position: 'absolute',
+                  bottom: '40px',
+                  left: '20px',
+                }}
+              >
+                PAY TO THE ORDER OF ___________________________
+              </Text>
 
-            <Text
-              size="sm"
-              style={{
-                position: 'absolute',
-                bottom: '20px',
-                right: '20px',
-                fontStyle: 'italic',
-              }}
-            >
-              MEMO: this is a piece of paper
-            </Text>
-          </Card>
-          <Text size="xl" my="xl">
+              <Text
+                size="sm"
+                style={{
+                  position: 'absolute',
+                  bottom: '20px',
+                  right: '20px',
+                  fontStyle: 'italic',
+                }}
+              >
+                MEMO: this is a piece of paper
+              </Text>
+            </Card>
+          </motion.div>
+          <Text size="xl" my="xl" style={{ textAlign: 'center' }}>
             It's just a piece of paper, it's around <b>0.1mm</b> thick. About
             the width of 2 human hairs.
           </Text>
-          <Text size="xl" my="xl">
+          <Text size="xl" my="xl" style={{ textAlign: 'center' }}>
             Now, imagine stacking the checks on top of each other.
           </Text>
 
@@ -166,28 +186,12 @@ export default function StoriesPage() {
                 </motion.div>
               ))}
             </Box>
-
-            <Text
-              size="sm"
-              c="dimmed"
-              style={{
-                position: 'absolute',
-                left: '25%',
-                top: '40px',
-                transform: 'translateX(-50%)',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              Stack of $1M checks...
-            </Text>
           </Box>
-          <Text size="xl" mt="xl">
-            <Center>
-              And keep stacking{' '}
-              <Text component="span" fw={700}>
-                ...
-              </Text>
-            </Center>
+          <Text size="xl" mt="xl" style={{ textAlign: 'center' }}>
+            And keep stacking{' '}
+            <Text component="span" fw={700}>
+              ...
+            </Text>
           </Text>
           <Box
             mt="xl"
@@ -209,28 +213,35 @@ export default function StoriesPage() {
               }}
             >
               {[...Array(100)].map((_, i) => (
-                <Box
+                <motion.div
                   key={i}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: i * 0.05, duration: 0.5 }}
+                  viewport={{ once: true }}
                   style={{
-                    position: 'absolute',
-                    width: '120px',
-                    height: '60px',
-                    backgroundColor: '#fff',
-                    border: '1px solid #000',
                     transform: `translateZ(${i * 4}px)`,
-                    boxShadow: '1px 1px 2px rgba(0,0,0,0.1)',
                   }}
-                />
+                >
+                  <Box
+                    style={{
+                      position: 'absolute',
+                      width: '120px',
+                      height: '60px',
+                      backgroundColor: '#fff',
+                      border: '1px solid #000',
+                      boxShadow: '1px 1px 2px rgba(0,0,0,0.1)',
+                    }}
+                  />
+                </motion.div>
               ))}
             </Box>
           </Box>
-          <Text size="xl" mt="xl">
-            <Center>
-              AND STILL STACKING{' '}
-              <Text component="span" fw={700}>
-                ...
-              </Text>
-            </Center>
+          <Text size="xl" mt="xl" style={{ textAlign: 'center' }}>
+            And keep stacking...{' '}
+            <Text component="span" fw={700}>
+              ...
+            </Text>
           </Text>
           <Box
             mt="xl"
@@ -267,19 +278,17 @@ export default function StoriesPage() {
               ))}
             </Box>
           </Box>
-          <Text size="xl" mt="xl">
+          <Text size="xl" my="xl" style={{ textAlign: 'center' }}>
             Until you have the net worth of the world's richest man{' '}
             <Text component="span" fw={700}>
               Elon Musk:
             </Text>
           </Text>
-          <Center mt="lg">
-            <Text size={'3rem'} my="lg" fw={800}>
-              $320 Billion
-            </Text>
-          </Center>
+          <Text size={'3rem'} my="xl" fw={800} style={{ textAlign: 'center' }}>
+            $320 Billion
+          </Text>
           <Box mt="xl">
-            <Text size="xl" mb="md">
+            <Text size="xl" my="xl" style={{ textAlign: 'center' }}>
               It'll reach the height of a <b>10-story</b> building.
             </Text>
             <Box
@@ -403,7 +412,7 @@ export default function StoriesPage() {
               </Box>
             </Box>
           </Box>
-          <Text size="xl" mt={150} mb="md">
+          <Text size="xl" mt={150} mb="md" style={{ textAlign: 'center' }}>
             <b>To put this in perspective:</b> If you jump off this stack of 1
             million dollar checks... You will most definitely{' '}
             <Text component="span" c="red" fw={700}>
@@ -412,69 +421,72 @@ export default function StoriesPage() {
             if you try.
           </Text>
 
-          <Title order={3} my={25}>
+          <Title order={1} mt={75} style={{ textAlign: 'center' }}>
             Another way to put it:
           </Title>
 
-          <Text size="xl" mt="md">
+          <Text size="xl" mt="md" style={{ textAlign: 'center' }}>
             If you somehow made a <b>$1 million per hour</b>, it'll take you
             more than a <b>century</b> to make as much as Elon Musk.
           </Text>
 
-          <Text size="xl" mt="md">
-            Try it yourself!
-          </Text>
-          <Box
-            mt="xl"
-            style={{
-              position: 'relative',
-              height: '100px',
-              overflow: 'hidden',
-            }}
-          >
-            {floatingNumbers.map((timestamp) => (
-              <Text
-                key={timestamp}
-                style={{
-                  position: 'absolute',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  color: '#40c057',
-                  animation: 'floatUp 2s linear forwards',
-                }}
-              >
-                +$1,000,000
-              </Text>
-            ))}
-            <Text style={{ textAlign: 'center' }}>
-              {totalEarned >= 320_000_000_000 ? (
-                <Text c="green" component="span">
-                  Congratulations! You're now richer than Elon Musk! ↑
-                </Text>
-              ) : (
-                <Text c="red" component="span">
-                  ↓ You're still poorer than Elon Musk...
-                </Text>
-              )}
+          <Card m="xl" shadow="sm" radius="md" withBorder>
+            <Text fw={700} size="xl" mt="sm" style={{ textAlign: 'center' }}>
+              Try it yourself!
             </Text>
-            <Text
-              size={'2rem'}
-              fw={700}
-              my="md"
-              style={{ textAlign: 'center' }}
+            <Box
+              mt="xl"
+              style={{
+                position: 'relative',
+                height: '100px',
+                overflow: 'hidden',
+              }}
             >
-              Total earned: ${totalEarned.toLocaleString()}
-            </Text>
-          </Box>
-          <Center>
-            <Button w="20%" onClick={addMillion} color="green">
-              Add $1,000,000
-            </Button>
-          </Center>
+              {floatingNumbers.map((timestamp) => (
+                <Text
+                  key={timestamp}
+                  style={{
+                    position: 'absolute',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    color: '#40c057',
+                    animation: 'floatUp 2s linear forwards',
+                  }}
+                >
+                  +$1,000,000
+                </Text>
+              ))}
+              <Text style={{ textAlign: 'center' }}>
+                {totalEarned >= 320_000_000_000 ? (
+                  <Text c="green" component="span">
+                    Congratulations! You're now richer than Elon Musk! ↑
+                  </Text>
+                ) : (
+                  <Text c="red" component="span">
+                    ↓ You're still poorer than Elon Musk...
+                  </Text>
+                )}
+              </Text>
+              <Text
+                size={'2rem'}
+                fw={700}
+                my="md"
+                style={{ textAlign: 'center' }}
+              >
+                Total earned: ${totalEarned.toLocaleString()}
+              </Text>
+            </Box>
 
-          <Blockquote mt="md" p="md">
-            * This is a demo. No money will be transferred.
-          </Blockquote>
+            <Center>
+              <Button w="20%" onClick={addMillion} color="green">
+                Add $1,000,000
+              </Button>
+            </Center>
+            <Blockquote mt="md" p="md">
+              * This is a demo. No money will be transferred.
+            </Blockquote>
+          </Card>
+          <SpendPage />
         </Card>
       </Container>
     </>
