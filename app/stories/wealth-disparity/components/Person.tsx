@@ -27,6 +27,15 @@ export function Person() {
           const personElement = document.querySelector('[data-person]');
           if (personElement) {
             const personRect = personElement.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+
+            if (personRect.bottom >= windowHeight) {
+              setIsSplat(true);
+              setShowSplatText(true);
+              setTimeout(() => setShowSplatText(false), 1000);
+              setVelocity({ x: 0, y: 0 });
+              return prev;
+            }
 
             const deathElements = document.getElementsByClassName('death');
             for (const death of Array.from(deathElements)) {
