@@ -32,7 +32,7 @@ export default function StoriesPage() {
   const [intersectingSections, setIntersectingSections] = useState<number[]>(
     [],
   );
-  const sectionRefs = useRef([]);
+  const sectionRefs = useRef<(HTMLElement | null)[]>([]);
 
   const [allSectionsPassed, setAllSectionsPassed] = useState(false);
 
@@ -70,7 +70,9 @@ export default function StoriesPage() {
     );
 
     sectionRefs.current.forEach((ref) => {
-      observer.observe(ref);
+      if (ref) {
+        observer.observe(ref);
+      }
     });
 
     return () => {
@@ -84,9 +86,9 @@ export default function StoriesPage() {
     }
   }, [intersectingSections]);
 
-  const updateSectionRefs = (ref: any) => {
+  const updateSectionRefs = (ref: HTMLElement | null) => {
     if (ref) {
-      sectionRefs.current.push(ref);
+      sectionRefs.current = [...sectionRefs.current, ref];
     }
   };
 
