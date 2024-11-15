@@ -44,16 +44,72 @@ export default function StoriesPage() {
   return (
     <>
       <style>{floatUpKeyframes}</style>
-      <Container size="lg">
+      <Container size="md">
         <BackButton href="/stories" />
         <Card shadow="sm" radius="md" withBorder pt={40}>
           <Pin left="50%" top="-20px" color="red" />
-          <Text size="xl" my="xl" style={{ textAlign: 'center' }}>
-            Imagine you have a check for{' '}
-            <Text component="span" fw={700}>
-              a million dollars.
-            </Text>
+          <Text size="xl" mb="md" style={{ textAlign: 'center' }}>
+            Most of the time, we think we have a good understanding of money. In
+            2024, a 10 dollar coffee would be outrageous yet a 3 dollar coffee
+            would seem like a good deal.
           </Text>
+
+          <Box
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '2rem',
+              fontSize: '4rem',
+              margin: '2rem 0',
+            }}
+          >
+            <Text size="2rem" fw={700} component="span" c="red">
+              ☕ $10
+            </Text>
+            <Text size="2rem" fw={700} component="span" c="green">
+              ☕ $3
+            </Text>
+          </Box>
+
+          <Text size="xl" mb="md" style={{ textAlign: 'center' }}>
+            We have a very good understanding of the value of money in our daily
+            lives.
+          </Text>
+          <Text size="xl" mb="md" style={{ textAlign: 'center' }}>
+            But when we think about money in terms of tens, hundreds, or even
+            thousands of million dollars, we start to lose our sense of scale.
+          </Text>
+          <Box
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              flexDirection: 'column',
+              gap: '2rem',
+              fontSize: '4rem',
+              margin: '2rem 0',
+            }}
+          >
+            <Text size="2rem" fw={700} component="span">
+              💵 $1,000
+            </Text>
+            <Text size="2rem" fw={700} component="span">
+              💰 $1,000,000
+            </Text>
+            <Text size="2rem" fw={700} component="span">
+              🏦 $1,000,000,000
+            </Text>
+          </Box>
+
+          <Text size="xl" mb="md" style={{ textAlign: 'center' }}>
+            But when it comes to the net worth of the world's richest people, we
+            think we understand it.
+          </Text>
+          <Text size="xl" fw={700} mb="md" style={{ textAlign: 'center' }}>
+            Do we really?
+          </Text>
+          
           <motion.div
             initial={{ rotateX: -90, opacity: 0 }}
             whileInView={{
@@ -135,11 +191,17 @@ export default function StoriesPage() {
               </Text>
             </Card>
           </motion.div>
-          <Text size="xl" my="xl" style={{ textAlign: 'center' }}>
+          <Text size="xl" mt="xl" style={{ textAlign: 'center' }}>
+            Imagine you have a check for{' '}
+            <Text component="span" fw={700}>
+              a million dollars.
+            </Text>
+          </Text>
+          <Text size="xl" mt="xl" style={{ textAlign: 'center' }}>
             It's just a piece of paper, it's around <b>0.1mm</b> thick. About
             the width of 2 human hairs.
           </Text>
-          <Text size="xl" my="xl" style={{ textAlign: 'center' }}>
+          <Text size="xl" mt="xl" style={{ textAlign: 'center' }}>
             Now, imagine stacking the checks on top of each other.
           </Text>
 
@@ -238,7 +300,7 @@ export default function StoriesPage() {
             </Box>
           </Box>
           <Text size="xl" mt="xl" style={{ textAlign: 'center' }}>
-            And keep stacking...{' '}
+            And keep stacking{' '}
             <Text component="span" fw={700}>
               ...
             </Text>
@@ -486,6 +548,10 @@ export default function StoriesPage() {
               * This is a demo. No money will be transferred.
             </Blockquote>
           </Card>
+          <Text size="xl" mt="xl" style={{ textAlign: 'center' }}>
+            To make it even clearer, let's see how you would spend Elon Musk's
+            net worth.
+          </Text>
           <SpendPage />
         </Card>
       </Container>
