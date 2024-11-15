@@ -15,7 +15,7 @@ import { motion } from 'framer-motion';
 import SpendPage from './spend';
 import { CoffeeComparison } from './components/CoffeeComparison';
 import { MoneyScale } from './components/MoneyScale';
-import { MillionDollarCheck } from './components/check';
+import { MillionDollarCheck } from './components/Check';
 import { CheckStack } from './components/CheckStack';
 import { Person } from './components/Person';
 
