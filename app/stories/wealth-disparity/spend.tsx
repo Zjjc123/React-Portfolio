@@ -252,10 +252,6 @@ export default function SpendPage() {
 
   return (
     <>
-      <Text fw={700} size="xl" mt="sm" style={{ textAlign: 'center' }}>
-        What could you buy with Elon's fortune?
-      </Text>
-
       <Text my="xl" size={'3rem'} fw={700} style={{ textAlign: 'center' }}>
         ${totalEarned.toLocaleString()}
       </Text>

@@ -108,10 +108,7 @@ export default function StoriesPage() {
 
   return (
     <>
-      <BackButton
-        style={{ position: 'fixed', top: 10, left: 0 }}
-        href="/stories"
-      />
+      <BackButton href="/stories" />
       <Container bg="white" style={{ minHeight: '100vh' }}>
         <div
           className={allSectionsPassed ? 'full-width' : ''}
@@ -196,7 +193,7 @@ export default function StoriesPage() {
             <Text size="xl" mb="md" style={{ textAlign: 'center' }}>
               It'll reach the height of a <b>10-story</b> building.
             </Text>
-          
+
             <Text size="xl" mb="md" style={{ textAlign: 'center' }}>
               <b>To put this in perspective:</b> If you jump off this stack of 1
               million dollar checks... You will most definitely{' '}
@@ -222,7 +219,7 @@ export default function StoriesPage() {
             }}
             mt={150}
           >
-            <Text size="xl" mt="xl" style={{ textAlign: 'center' }}>
+            <Text size="xl" mt="xl" fw={600} style={{ textAlign: 'center' }}>
               To make it even clearer, let's see how you would spend Elon Musk's
               net worth.
             </Text>

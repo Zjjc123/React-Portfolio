@@ -5,7 +5,7 @@ import { BackButton } from '../../components/BackButton';
 
 export default function StoriesPage() {
   return (
-    <Container>
+    <Container py="xl">
       <BackButton href="/" />
       <Card shadow="sm" radius="md" withBorder>
         <HoverLink

@@ -15,7 +15,7 @@ export function BackButton({ href, style }: BackButtonProps) {
       color="gray"
       mb="lg"
       variant="transparent"
-      style={style}
+      style={{ position: 'fixed', top: 10, left: 0, ...style }}
     >
       <IconArrowLeft size={32} />
     </Button>
