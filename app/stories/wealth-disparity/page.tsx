@@ -24,7 +24,7 @@ const textContainer = {
   alignItems: 'center',
   height: '100vh',
   textAlign: 'center',
-  margin: 'auto 0',
+  padding: '0 1rem',
 } as const;
 
 const lastSectionId = 6;
