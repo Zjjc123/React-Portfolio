@@ -2,10 +2,7 @@
 
 import {
   Box,
-  Card,
-  Center,
   Text,
-  Button,
   Blockquote,
   Container,
 } from '@mantine/core';
@@ -19,6 +16,7 @@ import { MillionDollarCheck } from './components/Check';
 import { CheckStack } from './components/CheckStack';
 import { Person } from './components/Person';
 import { SenseOfScale } from './components/SenseOfScale';
+import MoneyClicker from './components/MoneyClicker';
 
 const textContainer = {
   display: 'flex',
@@ -30,10 +28,9 @@ const textContainer = {
   margin: 'auto 0',
 } as const;
 
-export default function StoriesPage() {
-  const [totalEarned, setTotalEarned] = useState(0);
-  const [floatingNumbers, setFloatingNumbers] = useState<number[]>([]);
+const lastSectionId = 6;
 
+export default function StoriesPage() {
   const [sectionNumber, setSectionNumber] = useState(0);
   const [intersectingSections, setIntersectingSections] = useState<number[]>(
     [],
@@ -64,7 +61,9 @@ export default function StoriesPage() {
           }
         });
 
-        const allPassed = newIntersectingSections.length === 0;
+        const allPassed = !newIntersectingSections.some(
+          (id) => id <= lastSectionId,
+        );
         setAllSectionsPassed(allPassed);
         setIntersectingSections(newIntersectingSections);
       },
@@ -96,14 +95,6 @@ export default function StoriesPage() {
     if (ref) {
       sectionRefs.current = [...sectionRefs.current, ref];
     }
-  };
-
-  const addMillion = () => {
-    setTotalEarned((prev) => prev + 1_000_000);
-    setFloatingNumbers((prev) => [...prev, Date.now()]);
-    setTimeout(() => {
-      setFloatingNumbers((prev) => prev.slice(1));
-    }, 2000);
   };
 
   return (
@@ -206,10 +197,13 @@ export default function StoriesPage() {
             <Blockquote mt="md" p="md" color="red">
               Try dragging and releasing the person to see what happens...
             </Blockquote>
-            {/* <Text size="xl" mt="md" style={{ textAlign: 'center' }}>
+            
+          </section>
+          <section ref={updateSectionRefs} id="6" style={textContainer}>
+            <Text size="xl" mt="md" style={{ textAlign: 'center' }}>
               If you somehow made a <b>$1 million per hour</b>, it'll take you
               more than a <b>century</b> to make as much as Elon Musk.
-            </Text> */}
+            </Text>
           </section>
 
           <Container
@@ -388,67 +382,13 @@ export default function StoriesPage() {
               </Box>
             )}
             {sectionNumber === 6 && (
-              <Card m="xl" shadow="sm" radius="md" withBorder>
-                <Text
-                  fw={700}
-                  size="xl"
-                  mt="sm"
-                  style={{ textAlign: 'center' }}
-                >
-                  Try it yourself!
-                </Text>
-                <Box
-                  mt="xl"
-                  style={{
-                    position: 'relative',
-                    height: '100px',
-                    overflow: 'hidden',
-                  }}
-                >
-                  {floatingNumbers.map((timestamp) => (
-                    <Text
-                      key={timestamp}
-                      style={{
-                        position: 'absolute',
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                        color: '#40c057',
-                        animation: 'floatUp 2s linear forwards',
-                      }}
-                    >
-                      +$1,000,000
-                    </Text>
-                  ))}
-                  <Text style={{ textAlign: 'center' }}>
-                    {totalEarned >= 320_000_000_000 ? (
-                      <Text c="green" component="span">
-                        Congratulations! You're now richer than Elon Musk! ↑
-                      </Text>
-                    ) : (
-                      <Text c="red" component="span">
-                        ↓ You're still poorer than Elon Musk...
-                      </Text>
-                    )}
-                  </Text>
-                  <Text
-                    size={'2rem'}
-                    fw={700}
-                    my="md"
-                    style={{ textAlign: 'center' }}
-                  >
-                    Total earned: ${totalEarned.toLocaleString()}
-                  </Text>
-                </Box>
-
-                <Center>
-                  <Button w="20%" onClick={addMillion} color="green">
-                    Add $1,000,000
-                  </Button>
-                </Center>
-                <Blockquote mt="md" p="md">
-                  * This is a demo. No money will be transferred.
-                </Blockquote>
-              </Card>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.75 }}
+              >
+                <MoneyClicker />
+              </motion.div>
             )}
           </div>
         </div>
