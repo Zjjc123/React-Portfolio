@@ -2,13 +2,12 @@
 import { Container, Flex } from '@mantine/core';
 import VideoModule from '../../components/VideoModule';
 import { BackButton } from '../../components/BackButton';
-import PageAnimationWrapper from '../../components/PageAnimationWrapper';
-
+  
 type Props = {};
 
 export default function VideoPage({}: Props) {
   return (
-    <Container>
+    <Container py="xl">
       <BackButton href="/" />
       <Flex direction="column" gap="lg">
         <VideoModule

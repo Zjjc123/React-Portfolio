@@ -1,4 +1,4 @@
-import { Paper, Stack, Text, Group, Box, Flex } from '@mantine/core';
+import { Paper, Stack, Text, Flex } from '@mantine/core';
 import { motion } from 'framer-motion';
 
 export function MoneyScale() {
