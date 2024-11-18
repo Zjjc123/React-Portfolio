@@ -1,10 +1,6 @@
 'use client';
 
-import {
-  Text,
-  Blockquote,
-  Container,
-} from '@mantine/core';
+import { Text, Blockquote, Container } from '@mantine/core';
 import { BackButton } from '../../../components/BackButton';
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
@@ -47,24 +43,25 @@ export default function StoriesPage() {
 
         entries.forEach((entry) => {
           const sectionId = parseInt(entry.target.id);
-          if (
-            entry.isIntersecting &&
-            entry.intersectionRatio > maxIntersectingRatio
-          ) {
-            maxIntersectingSection = sectionId;
-            maxIntersectingRatio = entry.intersectionRatio;
-          }
-
           if (entry.isIntersecting) {
             newIntersectingSections.push(sectionId);
+            if (entry.intersectionRatio > maxIntersectingRatio) {
+              maxIntersectingSection = sectionId;
+              maxIntersectingRatio = entry.intersectionRatio;
+            }
           }
         });
+
+        if (newIntersectingSections.length > 0) {
+          setIntersectingSections(newIntersectingSections);
+        } else {
+          setIntersectingSections([sectionNumber]);
+        }
 
         const allPassed = !newIntersectingSections.some(
           (id) => id <= lastSectionId,
         );
         setAllSectionsPassed(allPassed);
-        setIntersectingSections(newIntersectingSections);
       },
       {
         root: null,
@@ -82,7 +79,7 @@ export default function StoriesPage() {
     return () => {
       observer.disconnect();
     };
-  }, [sectionRefs]);
+  }, [sectionNumber]);
 
   useEffect(() => {
     if (intersectingSections.length > 0) {
@@ -154,7 +151,7 @@ export default function StoriesPage() {
             </Text>
           </section>
           <section ref={updateSectionRefs} id="4" style={textContainer}>
-          <Text size="xl" mt="xl" style={{ textAlign: 'center' }}>
+            <Text size="xl" mt="xl" style={{ textAlign: 'center' }}>
               Now, imagine stacking the checks on top of each other.
             </Text>
             <Text size="xl" mb="md" style={{ textAlign: 'center' }}>
@@ -196,7 +193,6 @@ export default function StoriesPage() {
             <Blockquote mt="md" p="md" color="red">
               Try dragging and releasing the person to see what happens...
             </Blockquote>
-            
           </section>
           <section ref={updateSectionRefs} id="6" style={textContainer}>
             <Text size="xl" mt="md" style={{ textAlign: 'center' }}>
