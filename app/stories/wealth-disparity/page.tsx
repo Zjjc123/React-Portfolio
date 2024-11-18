@@ -18,6 +18,7 @@ import { MoneyScale } from './components/MoneyScale';
 import { MillionDollarCheck } from './components/Check';
 import { CheckStack } from './components/CheckStack';
 import { Person } from './components/Person';
+import { SenseOfScale } from './components/SenseOfScale';
 
 const textContainer = {
   display: 'flex',
@@ -127,16 +128,12 @@ export default function StoriesPage() {
                 good understanding
               </Text>{' '}
               of money.
-
               <br />
               <br />
-
               In 2024, a $10 coffee would be pretty expensive, but a $2 coffee
               would seem like a good deal.
-
               <br />
               <br />
-
               <Blockquote p="md">
                 Click the coffee cup to the right to fill it up.
               </Blockquote>
@@ -144,21 +141,17 @@ export default function StoriesPage() {
           </section>
           <section ref={updateSectionRefs} id="1" style={textContainer}>
             <Text size="xl" my={500} style={{ textAlign: 'center' }}>
-              We understand the difference between <b>$100</b> and{' '}
-              <b>$1,000</b> dollars.
-            </Text>
-            <Text size="xl" mb="md" style={{ textAlign: 'center' }}>
-              But when we think about money in terms of tens, hundreds, or even
-              thousands of million dollars, we start to lose our sense of scale.
+              We understand the difference between <b>$100</b> and <b>$1,000</b>{' '}
+              dollars.
             </Text>
           </section>
           <section ref={updateSectionRefs} id="2" style={textContainer}>
             <Text size="xl" mb="md" style={{ textAlign: 'center' }}>
-              But when it comes to the net worth of the world's richest people,
-              we think we understand it.
-            </Text>
-            <Text size="xl" fw={700} mb="md" style={{ textAlign: 'center' }}>
-              Do we really?
+              But when we think about money in terms of <b>millions</b> or{' '}
+              <b>billions</b>, we start to lose our sense of scale.
+              <br />
+              <br />
+              Even if we think we understand it.
             </Text>
           </section>
           <section ref={updateSectionRefs} id="3" style={textContainer}>
@@ -172,11 +165,11 @@ export default function StoriesPage() {
               It's just a piece of paper, it's around <b>0.1mm</b> thick. About
               the width of 2 human hairs.
             </Text>
-            <Text size="xl" mt="xl" style={{ textAlign: 'center' }}>
-              Now, imagine stacking the checks on top of each other.
-            </Text>
           </section>
           <section ref={updateSectionRefs} id="4" style={textContainer}>
+          <Text size="xl" mt="xl" style={{ textAlign: 'center' }}>
+              Now, imagine stacking the checks on top of each other.
+            </Text>
             <Text size="xl" mb="md" style={{ textAlign: 'center' }}>
               Keep stacking those million dollar checks...
             </Text>
@@ -194,15 +187,16 @@ export default function StoriesPage() {
             >
               $320 Billion
             </Text>
-            <Text size="xl" mb="md" style={{ textAlign: 'center' }}>
-              It'll reach the height of a <b>10-story</b> building.
-            </Text>
           </section>
           <section
             ref={updateSectionRefs}
             id="5"
             style={{ ...textContainer, paddingBottom: '200px' }}
           >
+            <Text size="xl" mb="md" style={{ textAlign: 'center' }}>
+              It'll reach the height of a <b>10-story</b> building.
+            </Text>
+          
             <Text size="xl" mb="md" style={{ textAlign: 'center' }}>
               <b>To put this in perspective:</b> If you jump off this stack of 1
               million dollar checks... You will most definitely{' '}
@@ -265,11 +259,7 @@ export default function StoriesPage() {
           >
             {sectionNumber === 0 && <CoffeeComparison />}
             {sectionNumber === 1 && <MoneyScale />}
-            {sectionNumber === 2 && (
-              <Text size="xl" style={{ textAlign: 'center' }}>
-                Text
-              </Text>
-            )}
+            {sectionNumber === 2 && <SenseOfScale />}
             {sectionNumber === 3 && (
               <motion.div
                 initial={{ rotateX: -90, opacity: 0 }}

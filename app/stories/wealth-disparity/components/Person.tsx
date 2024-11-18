@@ -11,7 +11,7 @@ export function Person() {
 
   useEffect(() => {
     let animationFrameId: number;
-    const gravity = 0.1;
+    const gravity = 0.3;
     const friction = 0.99;
 
     const animate = () => {
@@ -96,7 +96,7 @@ export function Person() {
         y: prev.y - deltaY,
       }));
 
-      const swayAmount = deltaX * 7;
+      const swayAmount = deltaX * 4;
       const returnToCenter = swayAmount * Math.exp(-Math.abs(deltaX) * 0.01);
       setRotation(returnToCenter);
 
