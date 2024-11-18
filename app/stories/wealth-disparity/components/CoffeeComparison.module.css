@@ -1,0 +1,60 @@
+.coffeeContainer {
+  position: relative;
+  width: 120px;
+  height: 140px;
+}
+
+.coffeeCup {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background: white;
+  border: 4px solid #333;
+  border-radius: 0 0 20px 20px;
+}
+
+.handle {
+  position: absolute;
+  right: -20px;
+  top: 50px;
+  width: 25px;
+  height: 40px;
+  border: 4px solid #333;
+  border-left: none;
+  border-radius: 0 20px 20px 0;
+}
+
+.coffeeLiquid {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #6f4e37;
+  border-radius: 0 0 16px 16px;
+}
+
+.coffeeDrip {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 20px;
+  background: #6f4e37;
+  animation: drip 5s forwards;
+}
+
+@keyframes drip {
+  0% {
+    height: 0px;
+    opacity: 1;
+  }
+  95% {
+    height: 100px;
+    opacity: 1;
+  }
+  100% {
+    height: 140px;
+    opacity: 0;
+  }
+}

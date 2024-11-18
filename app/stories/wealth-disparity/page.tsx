@@ -122,15 +122,30 @@ export default function StoriesPage() {
         >
           <section ref={updateSectionRefs} id="0" style={textContainer}>
             <Text size="xl" mb="md" style={{ textAlign: 'center' }}>
-              Most of the time, we think we have a good understanding of money.
-              In 2024, a 10 dollar coffee would be outrageous and a 3 dollar
-              coffee would seem like a good deal.
+              Most of the time, we think we have a{' '}
+              <Text component="span" fw={700}>
+                good understanding
+              </Text>{' '}
+              of money.
+
+              <br />
+              <br />
+
+              In 2024, a $10 coffee would be pretty expensive, but a $2 coffee
+              would seem like a good deal.
+
+              <br />
+              <br />
+
+              <Blockquote p="md">
+                Click the coffee cup to the right to fill it up.
+              </Blockquote>
             </Text>
           </section>
           <section ref={updateSectionRefs} id="1" style={textContainer}>
             <Text size="xl" my={500} style={{ textAlign: 'center' }}>
-              We have a very good understanding of the value of money in our
-              daily lives.
+              We understand the difference between <b>$100</b> and{' '}
+              <b>$1,000</b> dollars.
             </Text>
             <Text size="xl" mb="md" style={{ textAlign: 'center' }}>
               But when we think about money in terms of tens, hundreds, or even
