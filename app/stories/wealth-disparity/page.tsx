@@ -3,7 +3,7 @@
 import { Text, Blockquote, Container } from '@mantine/core';
 import { BackButton } from '../../../components/BackButton';
 import { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import SpendPage from './spend';
 import { CoffeeComparison } from './components/CoffeeComparison';
 import { MoneyScale } from './components/MoneyScale';
@@ -12,6 +12,7 @@ import { CheckStack } from './components/CheckStack';
 import { SenseOfScale } from './components/SenseOfScale';
 import MoneyClicker from './components/MoneyClicker';
 import Building from './components/Building';
+import { IconChevronDown } from '@tabler/icons-react';
 
 const textContainer = {
   display: 'flex',
@@ -33,6 +34,7 @@ export default function StoriesPage() {
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
 
   const [allSectionsPassed, setAllSectionsPassed] = useState(false);
+  const [isAtStart, setIsAtStart] = useState(true);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -87,6 +89,16 @@ export default function StoriesPage() {
     }
   }, [intersectingSections]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsAtStart(scrollPosition < 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const updateSectionRefs = (ref: HTMLElement | null) => {
     if (ref) {
       sectionRefs.current = [...sectionRefs.current, ref];
@@ -97,6 +109,9 @@ export default function StoriesPage() {
     <>
       <BackButton href="/stories" />
       <Container bg="white" style={{ minHeight: '100vh' }}>
+        <Text size="2.5rem" fw={700} ta="center" mt={100} mb={0}>
+          Understanding: Wealth Disparity
+        </Text>
         <div
           className={allSectionsPassed ? 'full-width' : ''}
           style={{
@@ -282,6 +297,37 @@ export default function StoriesPage() {
           </div>
         </div>
       </Container>
+      <AnimatePresence mode="wait">
+        {isAtStart && (
+          <motion.div
+            style={{
+              position: 'fixed',
+              bottom: 20,
+              left: '50%',
+              transform: 'translateX(-50%)',
+              zIndex: 1000,
+            }}
+            initial={{ opacity: 1, y: 0 }}
+            animate={{ 
+              opacity: 1, 
+              y: [0, 10, 0] 
+            }}
+            exit={{ 
+              opacity: 0,
+              y: -10 
+            }}
+            transition={{
+              y: {
+                duration: 1,
+                repeat: isAtStart ? Infinity : 0
+              },
+              exit: { duration: 0.2 }
+            }}
+          >
+            <IconChevronDown size={32} color="#333" />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
