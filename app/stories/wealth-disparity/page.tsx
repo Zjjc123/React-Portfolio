@@ -210,7 +210,7 @@ export default function StoriesPage() {
               width: '100vw',
               position: 'relative',
             }}
-            mt={150}
+            my={150}
           >
             <Text size="xl" mt="xl" fw={600} style={{ textAlign: 'center' }}>
               To make it even clearer, let's see how you would spend Elon Musk's
