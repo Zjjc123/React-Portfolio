@@ -13,6 +13,7 @@ import { SenseOfScale } from './components/SenseOfScale';
 import MoneyClicker from './components/MoneyClicker';
 import Building from './components/Building';
 import { IconChevronDown } from '@tabler/icons-react';
+import { WealthDisparityGraph } from './components/WealthDisparityGraph';
 
 const textContainer = {
   display: 'flex',
@@ -224,11 +225,26 @@ export default function StoriesPage() {
             my={150}
           >
             <Text size="xl" mt="xl" fw={600} style={{ textAlign: 'center' }}>
+              To make it even clearer, let's see how wealth is distributed in
+              the United States:
+            </Text>
+
+            <Text size="xl" mt="xl" fw={600} style={{ textAlign: 'center' }}>
               To make it even clearer, let's see how you would spend Elon Musk's
               net worth.
             </Text>
 
             <SpendPage />
+
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                marginTop: '250px',
+              }}
+            >
+              <WealthDisparityGraph />
+            </div>
           </Container>
         </div>
 
@@ -308,20 +324,20 @@ export default function StoriesPage() {
               zIndex: 1000,
             }}
             initial={{ opacity: 1, y: 0 }}
-            animate={{ 
-              opacity: 1, 
-              y: [0, 10, 0] 
+            animate={{
+              opacity: 1,
+              y: [0, 10, 0],
             }}
-            exit={{ 
+            exit={{
               opacity: 0,
-              y: -10 
+              y: -10,
             }}
             transition={{
               y: {
                 duration: 1,
-                repeat: isAtStart ? Infinity : 0
+                repeat: isAtStart ? Infinity : 0,
               },
-              exit: { duration: 0.2 }
+              exit: { duration: 0.2 },
             }}
           >
             <IconChevronDown size={32} color="#333" />

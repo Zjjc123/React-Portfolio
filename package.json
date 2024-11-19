@@ -9,15 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@mantine/core": "7.13.5",
-    "@mantine/hooks": "7.13.5",
+    "@mantine/charts": "^7.14.1",
+    "@mantine/core": "7.14.1",
+    "@mantine/hooks": "7.14.1",
     "@next/bundle-analyzer": "^14.2.4",
     "@tabler/icons-react": "^3.6.0",
     "eslint-config-next": "^15.0.3",
     "framer-motion": "^11.11.11",
     "next": "^15.0.3",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "recharts": "^2.13.3"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",

@@ -61,13 +61,12 @@ export function CoffeeComparison() {
             -$6
           </motion.div>
         )}
-        {isFilling && <motion.div className={styles.coffeeDrip} />}
         <div className={styles.handle} />
         <div className={styles.coffeeCup} style={{ overflow: 'hidden' }}>
           <motion.div
             className={styles.coffeeLiquid}
             initial={{ height: '0%' }}
-            animate={{ height: isFilling ? '50%' : '0%' }}
+            animate={{ height: isFilling ? '70%' : '0%' }}
             transition={{
               duration: 5,
               ease: 'easeOut',
