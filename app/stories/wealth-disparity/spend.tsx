@@ -256,7 +256,7 @@ export default function SpendPage() {
         ${totalEarned.toLocaleString()}
       </Text>
 
-      <Flex mt="xl" wrap="wrap" gap="md">
+      <Flex mt="xl" wrap="wrap" gap="md" justify="center">
         {items
           .sort((a, b) => a.price - b.price)
           .map((item) => (

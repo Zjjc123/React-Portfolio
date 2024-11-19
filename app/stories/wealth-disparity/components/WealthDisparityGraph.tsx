@@ -34,7 +34,7 @@ export function WealthDisparityGraph() {
   return (
     <div style={{ width: '100%', maxWidth: '800px' }}>
       <Text size="xl" fw={700} ta="center" mb="md">
-        Total Family Wealth, by Wealth Group
+        U.S. Family Wealth Distribution by Wealth Group
       </Text>
       <Text size="sm" c="dimmed" ta="center" mb="xl">
         (Trillions of 2022 dollars)
@@ -55,15 +55,44 @@ export function WealthDisparityGraph() {
         tooltipProps={{
           content: ({ payload }) => {
             if (!payload?.length) return null;
+            const total = payload.reduce((sum, item) => sum + item.value, 0);
+
             return (
-              <div style={{ padding: '0.5rem' }}>
+              <div
+                style={{
+                  padding: '0.5rem',
+                  minWidth: '200px',
+                  background: 'white',
+                  border: '1px solid #e9ecef',
+                  borderRadius: '4px',
+                  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                }}
+              >
                 <Text fw={500} mb={5}>
                   Year: {payload[0].payload.year}
                 </Text>
                 {payload.map((item: any) => (
-                  <Text key={item.name} c={item.color}>
-                    {item.name}: ${item.value} trillion
-                  </Text>
+                  <Box key={item.name}>
+                    <Group justify="space-between" mb={2}>
+                      <Text size="sm" c={item.color}>
+                        {item.name === 'bottom50'
+                          ? 'Bottom 50%'
+                          : item.name === 'middle40'
+                            ? 'Middle 40%'
+                            : 'Top 10%'}
+                      </Text>
+                      <Text size="sm" c={item.color}>
+                        {`${((item.value / total) * 100).toFixed(1)}% (${item.value.toFixed(1)}T)`}
+                      </Text>
+                    </Group>
+                    <Box
+                      bg={item.color}
+                      h={8}
+                      w={`${(item.value / total) * 100}%`}
+                      mb={8}
+                      style={{ transition: 'width 200ms ease' }}
+                    />
+                  </Box>
                 ))}
               </div>
             );
@@ -71,6 +100,12 @@ export function WealthDisparityGraph() {
         }}
       />
       <Legend />
+      <Text size="xs" c="dimmed" ta="center" mt="md">
+        Source: Congressional Budget Office,{' '}
+        <a href="https://www.cbo.gov/publication/60343">
+          "Trends in the Distribution of Family Wealth, 1989 to 2022"
+        </a>
+      </Text>
     </div>
   );
 }
