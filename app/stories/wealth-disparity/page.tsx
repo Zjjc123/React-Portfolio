@@ -225,22 +225,27 @@ export default function StoriesPage() {
             my={150}
           >
             <Text size="xl" mt="xl" fw={600} style={{ textAlign: 'center' }}>
-              To make it even clearer, let's see how wealth is distributed in
-              the United States:
-            </Text>
-
-            <Text size="xl" mt="xl" fw={600} style={{ textAlign: 'center' }}>
               To make it even clearer, let's see how you would spend Elon Musk's
               net worth.
             </Text>
 
             <SpendPage />
 
+            <Text
+              size={'2rem'}
+              mt={200}
+              mb="xl"
+              fw={600}
+              style={{ textAlign: 'center' }}
+            >
+              Let's see how wealth is distributed in the United States:
+            </Text>
+
             <div
               style={{
-                display: 'flex',
-                justifyContent: 'center',
-                marginTop: '250px',
+                width: '100%',
+                maxWidth: '800px',
+                margin: '0 auto',
               }}
             >
               <WealthDisparityGraph />
