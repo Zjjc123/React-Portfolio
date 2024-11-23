@@ -1,6 +1,6 @@
 'use client';
 
-import { Text, Blockquote, Container } from '@mantine/core';
+import { Text, Blockquote, Container, Box, Group, Stack } from '@mantine/core';
 import { BackButton } from '../../../components/BackButton';
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -16,6 +16,7 @@ import { IconChevronDown } from '@tabler/icons-react';
 import {
   WealthDisparityGraph,
   WealthDisparityGraph2,
+  WealthDisparityPieChart,
 } from './components/WealthDisparityGraph';
 
 const textContainer = {
@@ -227,26 +228,122 @@ export default function StoriesPage() {
             }}
             my={150}
           >
-            <Text size="xl" mt="xl" fw={600} style={{ textAlign: 'center' }}>
-              To make it even clearer, let's see how you would spend Elon Musk's
-              net worth.
+            <Text
+              w="60%"
+              size={'2rem'}
+              mb={100}
+              mx="auto"
+              fw={700}
+              style={{ textAlign: 'center' }}
+            >
+              Let's see how you would spend Elon Musk's net worth.
             </Text>
 
             <SpendPage />
 
-            <Text
-              size={'2rem'}
-              mt={200}
-              mb="xl"
-              fw={600}
-              style={{ textAlign: 'center' }}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.3 }}
             >
-              Let's see how wealth is distributed in the United States:
-            </Text>
+              <Text
+                w="70%"
+                size={'2rem'}
+                mx="auto"
+                my={200}
+                fw={600}
+                style={{
+                  textAlign: 'center',
+                  background:
+                    'linear-gradient(90deg, #000000 0%, #444444 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}
+              >
+                But to really understand the problem, we have to look at the
+                growing wealth disparity in the United States.
+              </Text>
+            </motion.div>
 
-            <WealthDisparityGraph />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.5 }}
+            >
+              <WealthDisparityPieChart />
 
-            <WealthDisparityGraph2 />
+              <Text
+                w="60%"
+                size={'1.5rem'}
+                my={100}
+                mx="auto"
+                fw={400}
+                style={{ textAlign: 'center' }}
+              >
+                As of 2024, the{' '}
+                <Text component="span" fw={700}>
+                  top 10%
+                </Text>{' '}
+                of the population now owns{' '}
+                <Text component="span" fw={700}>
+                  62%
+                </Text>{' '}
+                of the wealth in the United States.
+              </Text>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <Text
+                w="60%"
+                size={'1.5rem'}
+                my={100}
+                mx="auto"
+                fw={400}
+                style={{ textAlign: 'center' }}
+              >
+                While the{' '}
+                <Text component="span" fw={700}>
+                  bottom 50%
+                </Text>{' '}
+                of the population owns only{' '}
+                <Text component="span" fw={700}>
+                  6%
+                </Text>{' '}
+                of the wealth in the United States.
+              </Text>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: 'easeOut' }}
+              viewport={{ once: true }}
+            >
+              <WealthDisparityGraph />
+
+              <Text
+                w="60%"
+                size={'1.5rem'}
+                my={100}
+                mx="auto"
+                fw={600}
+                style={{ textAlign: 'center' }}
+              >
+                In 2022, families in the top 10 percent of the distribution held
+                60 percent of all wealth, up from 56 percent in 1989, and
+                families in the top 1 percent of the distribution held 27
+                percent, up from 23 percent in 1989.
+              </Text>
+
+              <WealthDisparityGraph2 />
+            </motion.div>
           </Container>
         </div>
 

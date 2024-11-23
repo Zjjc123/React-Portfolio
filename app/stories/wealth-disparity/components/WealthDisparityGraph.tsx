@@ -1,4 +1,4 @@
-import { LineChart } from '@mantine/charts';
+import { LineChart, PieChart } from '@mantine/charts';
 import { Text, Group, Box } from '@mantine/core';
 
 const data = [
@@ -15,16 +15,6 @@ const data = [
   { year: '2019', bottom50: 10.9, middle40: 56.8, top10: 102.9 },
   { year: '2022', bottom50: 12.8, middle40: 66.5, top10: 119.6 },
 ];
-
-const dataPercentages = data.map((d) => {
-  const total = d.bottom50 + d.middle40 + d.top10;
-  return {
-    year: d.year,
-    bottom50: (d.bottom50 / total) * 100,
-    middle40: (d.middle40 / total) * 100,
-    top10: (d.top10 / total) * 100,
-  };
-});
 
 const Legend = () => (
   <Group justify="center" mt="md">
@@ -54,58 +44,34 @@ export function WealthDisparityGraph() {
       </Text>
       <LineChart
         h={400}
-        data={dataPercentages}
+        data={data}
         dataKey="year"
         series={[
-          { name: 'bottom50', color: 'blue.6' },
-          { name: 'middle40', color: 'green.6' },
-          { name: 'top10', color: 'red.6' },
+          { name: 'top10', color: 'red.6', label: 'Top 10%' },
+          { name: 'middle40', color: 'green.6', label: 'Middle 40%' },
+          { name: 'bottom50', color: 'blue.6', label: 'Bottom 50%' },
         ]}
         curveType="linear"
-        withLegend={false}
         gridAxis="xy"
         tooltipProps={{
           content: ({ payload }) => {
             if (!payload?.length) return null;
-
             return (
-              <div
-                style={{
-                  padding: '0.5rem',
-                  minWidth: '200px',
-                  background: 'white',
-                  border: '1px solid #e9ecef',
-                  borderRadius: '4px',
-                  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                }}
-              >
-                <Text fw={500} mb={5}>
+              <Box p="md" bg="white" style={{ border: '1px solid #ccc' }}>
+                <Text fw={700} mb={5}>
                   Year: {payload[0].payload.year}
                 </Text>
-                {payload.reverse().map((item: any) => (
-                  <Box key={item.name}>
-                    <Group justify="space-between" mb={2}>
-                      <Text size="sm" c={item.color}>
-                        {item.name === 'bottom50'
-                          ? 'Bottom 50%'
-                          : item.name === 'middle40'
-                            ? 'Middle'
-                            : 'Top 10%'}
-                      </Text>
-                      <Text size="sm" c={item.color}>
-                        {`${item.value.toFixed(1)}%`}
-                      </Text>
-                    </Group>
-                    <Box
-                      bg={item.color}
-                      h={8}
-                      w={`${item.value}%`}
-                      mb={8}
-                      style={{ transition: 'width 200ms ease' }}
-                    />
-                  </Box>
+                {payload.map((item) => (
+                  <Text fw={400} key={item.name} c={item.color}>
+                    {item.name === 'bottom50'
+                      ? 'Bottom 50%'
+                      : item.name === 'middle40'
+                        ? 'Middle 40%'
+                        : 'Top 10%'}
+                    : {item.value}T
+                  </Text>
                 ))}
-              </div>
+              </Box>
             );
           },
         }}
@@ -121,10 +87,10 @@ export function WealthDisparityGraph() {
   );
 }
 
-export function WealthDisparityGraph2() {
-  const quarterlyData = require('./QuarterlyDisparityData.json');
+const quarterlyData = require('./QuarterlyDisparityData.json');
 
-  const processedData = quarterlyData.map((d) => ({
+export function WealthDisparityGraph2() {
+  const processedData = quarterlyData.map((d: any) => ({
     ...d,
     top1pct: d.top0_1 + d.top1,
   }));
@@ -143,10 +109,33 @@ export function WealthDisparityGraph2() {
         dataKey="date"
         series={[
           { name: 'top1pct', color: 'orange.6', label: 'Top 1%' },
+          { name: 'top10', color: 'red.6', label: 'Top 10%' },
           { name: 'bottom50', color: 'blue.6', label: 'Bottom 50%' },
         ]}
         curveType="linear"
         gridAxis="xy"
+        tooltipProps={{
+          content: ({ payload }) => {
+            if (!payload?.length) return null;
+            return (
+              <Box p="md" bg="white" style={{ border: '1px solid #ccc' }}>
+                <Text fw={700} mb={5}>
+                  Quarter: {payload[0].payload.date}
+                </Text>
+                {payload.map((item) => (
+                  <Text fw={400} key={item.name} c={item.color}>
+                    {item.name === 'top1pct'
+                      ? 'Top 1%'
+                      : item.name === 'top10'
+                        ? 'Top 10%'
+                        : 'Bottom 50%'}
+                    : {item.value.toFixed(1)}%
+                  </Text>
+                ))}
+              </Box>
+            );
+          },
+        }}
       />
       <Text size="xs" c="dimmed" ta="center" mt="md">
         Source:{' '}
@@ -157,3 +146,52 @@ export function WealthDisparityGraph2() {
     </Box>
   );
 }
+
+export const WealthDisparityPieChart = () => {
+  const data = [
+    { name: 'Top 10%', value: 62, color: 'red.6' },
+    { name: 'Middle 40%', value: 32.3, color: 'blue.6' },
+    { name: 'Bottom 50%', value: 5.7, color: 'green.6' },
+  ];
+  return (
+    <Box my="xl">
+      <Text size="xl" fw={700} ta="center" mb="md">
+        U.S. Wealth Distribution in 2024
+      </Text>
+      <Text size="sm" c="dimmed" ta="center" mb="xl">
+        (Percentage of Total Wealth)
+      </Text>
+      <Group justify="center" mb="md">
+        {data.map((item: any) => (
+          <Group key={item.name} gap="xs">
+            <Box w={16} h={16} bg={item.color} />
+            <Text size="sm">{item.name}</Text>
+          </Group>
+        ))}
+      </Group>
+      <PieChart
+        h={300}
+        data={data}
+        withLabels
+        labelsType="percent"
+        tooltipDataSource="segment"
+        withTooltip
+        tooltipProps={{
+          content: ({ payload }) => {
+            if (!payload?.length) return null;
+            const data = payload[0].payload;
+            return (
+              <Box p="md" bg="white" style={{ border: '1px solid #ccc' }}>
+                <Text fw={700}>{data.name}</Text>
+                <Text>{data.value.toFixed(1)}% of total wealth</Text>
+              </Box>
+            );
+          },
+        }}
+      />
+      <Text size="xs" c="dimmed" ta="center" mt="md">
+        Source: Federal Reserve Distributional Financial Accounts
+      </Text>
+    </Box>
+  );
+};
