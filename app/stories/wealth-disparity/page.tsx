@@ -13,7 +13,10 @@ import { SenseOfScale } from './components/SenseOfScale';
 import MoneyClicker from './components/MoneyClicker';
 import Building from './components/Building';
 import { IconChevronDown } from '@tabler/icons-react';
-import { WealthDisparityGraph } from './components/WealthDisparityGraph';
+import {
+  WealthDisparityGraph,
+  WealthDisparityGraph2,
+} from './components/WealthDisparityGraph';
 
 const textContainer = {
   display: 'flex',
@@ -241,15 +244,9 @@ export default function StoriesPage() {
               Let's see how wealth is distributed in the United States:
             </Text>
 
-            <div
-              style={{
-                width: '100%',
-                maxWidth: '800px',
-                margin: '0 auto',
-              }}
-            >
-              <WealthDisparityGraph />
-            </div>
+            <WealthDisparityGraph />
+
+            <WealthDisparityGraph2 />
           </Container>
         </div>
 
