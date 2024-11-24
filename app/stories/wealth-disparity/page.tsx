@@ -3,7 +3,7 @@
 import { Text, Blockquote, Container, Box, Group, Stack } from '@mantine/core';
 import { BackButton } from '../../../components/BackButton';
 import { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import SpendPage from './spend';
 import { CoffeeComparison } from './components/CoffeeComparison';
 import { MoneyScale } from './components/MoneyScale';
@@ -14,10 +14,11 @@ import MoneyClicker from './components/MoneyClicker';
 import Building from './components/Building';
 import { IconChevronDown } from '@tabler/icons-react';
 import {
-  WealthDisparityGraph,
   WealthDisparityGraph2,
   WealthDisparityPieChart,
 } from './components/WealthDisparityGraph';
+import { WealthDistributionQuintiles } from './components/WealthDistributionQuintiles';
+import { BarChart } from '@mantine/charts';
 
 const textContainer = {
   display: 'flex',
@@ -30,6 +31,22 @@ const textContainer = {
 } as const;
 
 const lastSectionId = 6;
+
+const data2 = {
+  top20: 57,
+  second20: 20,
+  third20: 12,
+  fourth20: 7,
+  bottom20: 4,
+};
+
+const data3 = {
+  top20: 83,
+  second20: 11,
+  third20: 5.5,
+  fourth20: 0.4,
+  bottom20: 0.1,
+};
 
 export default function StoriesPage() {
   const [sectionNumber, setSectionNumber] = useState(0);
@@ -270,10 +287,66 @@ export default function StoriesPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.3 }}
+              style={{ marginBottom: '200px' }}
+            >
+              <Text size="xl" fw={700} mx="auto" w="60%" ta="center">
+                In 2012, this was what Americans think the wealth distribution{' '}
+                <Text component="span" size={'2rem'} fw={700}>
+                  SHOULD
+                </Text>{' '}
+                look like.
+              </Text>
+              <WealthDistributionQuintiles />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.3 }}
+              style={{ marginBottom: '200px' }}
+            >
+              <Text size="xl" fw={700} mx="auto" w="60%" ta="center">
+                This was what Americans{' '}
+                <Text component="span" size={'2rem'} fw={700}>
+                  THINK
+                </Text>{' '}
+                the wealth distribution looks like.
+              </Text>
+              <WealthDistributionQuintiles data={data2} />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.3 }}
+              style={{ marginBottom: '200px' }}
+            >
+              <Text size="xl" fw={700} mx="auto" w="60%" ta="center">
+                This was what the wealth distribution{' '}
+                <Text component="span" size={'2rem'} fw={700}>
+                  ACTUALLY
+                </Text>{' '}
+                looks like.
+              </Text>
+              <WealthDistributionQuintiles data={data3} />
+              <Text size="xs" c="dimmed" ta="center" mt="md">
+                Source:{' '}
+                <a href="https://www.hbs.edu/ris/Publication%20Files/Norton_Michael_Building%20a%20better%20America%20One%20wealth%20quintile%20at%20a%20time_4c575dff-fe1d-4002-b61a-1227d08b71be.pdf">
+                  Norton & Ariely (2011). Building a Better America—One Wealth
+                  Quintile at a Time
+                </a>
+              </Text>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: 'easeOut' }}
               viewport={{ once: true, amount: 0.5 }}
             >
-              <WealthDisparityPieChart />
-
               <Text
                 w="60%"
                 size={'1.5rem'}
@@ -320,29 +393,51 @@ export default function StoriesPage() {
               </Text>
             </motion.div>
 
+            <WealthDisparityPieChart />
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: 'easeOut' }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.3 }}
             >
-              <WealthDisparityGraph />
-
               <Text
                 w="60%"
-                size={'1.5rem'}
+                size={'2rem'}
                 my={100}
                 mx="auto"
-                fw={600}
+                fw={500}
                 style={{ textAlign: 'center' }}
               >
-                In 2022, families in the top 10 percent of the distribution held
-                60 percent of all wealth, up from 56 percent in 1989, and
-                families in the top 1 percent of the distribution held 27
-                percent, up from 23 percent in 1989.
+                That's not even the craziest part.
               </Text>
 
-              <WealthDisparityGraph2 />
+              <Text size={'3rem'} fw={400} mx="auto" w="60%" ta="center">
+                The combined networth of the top 400 Americans (5.4 trillion) is{' '}
+                <Text component="span" fw={700} size={'3rem'}>
+                  42%
+                </Text>{' '}
+                greater than the networth of the bottom half of the entire
+                United States population (3.8 trillion).
+              </Text>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <Text
+                size={'3rem'}
+                fw={900}
+                mx="auto"
+                w="60%"
+                ta="center"
+                py={250}
+              >
+                That is the problem.
+              </Text>
             </motion.div>
           </Container>
         </div>
