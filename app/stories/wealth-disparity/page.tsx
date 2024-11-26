@@ -1,9 +1,17 @@
 'use client';
 
-import { Text, Blockquote, Container, Box, Group, Stack } from '@mantine/core';
+import {
+  Text,
+  Blockquote,
+  Container,
+  Box,
+  Card,
+  Flex,
+  NumberInput,
+} from '@mantine/core';
 import { BackButton } from '../../../components/BackButton';
 import { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import SpendPage from './spend';
 import { CoffeeComparison } from './components/CoffeeComparison';
 import { MoneyScale } from './components/MoneyScale';
@@ -13,12 +21,8 @@ import { SenseOfScale } from './components/SenseOfScale';
 import MoneyClicker from './components/MoneyClicker';
 import Building from './components/Building';
 import { IconChevronDown } from '@tabler/icons-react';
-import {
-  WealthDisparityGraph2,
-  WealthDisparityPieChart,
-} from './components/WealthDisparityGraph';
+import { WealthDisparityPieChart } from './components/WealthDisparityGraph';
 import { WealthDistributionQuintiles } from './components/WealthDistributionQuintiles';
-import { BarChart } from '@mantine/charts';
 
 const textContainer = {
   display: 'flex',
@@ -48,6 +52,22 @@ const data3 = {
   bottom20: 0.1,
 };
 
+const calculateWealthTax = (netWorth: number) => {
+  if (netWorth < 50000000) return 0;
+
+  let tax = 0;
+  if (netWorth > 1000000000) {
+    // 2% on wealth between 50M and 1B
+    tax += (1000000000 - 50000000) * 0.02;
+    // 3% on wealth above 1B
+    tax += (netWorth - 1000000000) * 0.03;
+  } else {
+    // 2% on wealth above 50M
+    tax += (netWorth - 50000000) * 0.02;
+  }
+  return tax;
+};
+
 export default function StoriesPage() {
   const [sectionNumber, setSectionNumber] = useState(0);
   const [intersectingSections, setIntersectingSections] = useState<number[]>(
@@ -57,6 +77,8 @@ export default function StoriesPage() {
 
   const [allSectionsPassed, setAllSectionsPassed] = useState(false);
   const [isAtStart, setIsAtStart] = useState(true);
+
+  const [netWorth, setNetWorth] = useState(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -131,8 +153,12 @@ export default function StoriesPage() {
     <>
       <BackButton href="/stories" />
       <Container bg="white" style={{ minHeight: '100vh' }}>
-        <Text size="2.5rem" fw={700} ta="center" mt={100} mb={0}>
-          Understanding: Wealth Disparity
+        <Text size="3rem" fw={400} ta="center" mt={100} mb={0}>
+          The{' '}
+          <Text component="span" fw={700}>
+            Wealth Disparity
+          </Text>{' '}
+          Gap
         </Text>
         <div
           className={allSectionsPassed ? 'full-width' : ''}
@@ -436,8 +462,325 @@ export default function StoriesPage() {
                 ta="center"
                 py={250}
               >
-                That is the problem.
+                That is a big problem.
               </Text>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <Text
+                size={'5rem'}
+                fw={700}
+                mx="auto"
+                w="60%"
+                ta="center"
+                mb={200}
+              >
+                Solution?
+              </Text>
+            </motion.div>
+
+            <Text size={'3rem'} fw={700} mx="auto" w="60%" ta="center" my={200}>
+              A good approach would be to create a{' '}
+              <Text component="span" fw={700} c="blue.6">
+                wealth tax.
+              </Text>
+            </Text>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <Text
+                size={'2rem'}
+                fw={700}
+                mx="auto"
+                w="60%"
+                ta="center"
+                mb="xl"
+              >
+                Here's how it works:
+              </Text>
+
+              <Container w="60%" mx="auto" mb={100}>
+                <Card withBorder p="xl">
+                  <Flex direction="column" gap="lg">
+                    <Box>
+                      <Text size="lg" fw={600} mb="xs">
+                        For wealth under $50 million:
+                      </Text>
+                      <Text size="xl" c="dimmed">
+                        Tax Rate:{' '}
+                        <Text component="span" fw={700} c="green.6">
+                          0%
+                        </Text>
+                      </Text>
+                    </Box>
+
+                    <Box>
+                      <Text size="lg" fw={600} mb="xs">
+                        For wealth between $50 million and $1 billion:
+                      </Text>
+                      <Text size="xl" c="dimmed">
+                        Tax Rate:{' '}
+                        <Text component="span" fw={700} c="green.6">
+                          2%
+                        </Text>
+                      </Text>
+                    </Box>
+
+                    <Box>
+                      <Text size="lg" fw={600} mb="xs">
+                        For wealth over $1 billion:
+                      </Text>
+                      <Text size="xl" c="dimmed">
+                        Tax Rate:{' '}
+                        <Text component="span" fw={700} c="green.6">
+                          3%
+                        </Text>
+                      </Text>
+                    </Box>
+                  </Flex>
+                </Card>
+                <Text size="sm" c="dimmed" ta="center" mt="md">
+                  Source:{' '}
+                  <a href="https://elizabethwarren.com/plans/ultra-millionaire-tax">
+                    Elizabeth Warren's Ultra Millionaire Tax
+                  </a>
+                </Text>
+              </Container>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.3 }}
+              style={{ marginBottom: '200px', marginTop: '200px' }}
+            >
+              <Text
+                size={'1.5rem'}
+                mx="auto"
+                w="60%"
+                ta="center"
+                my="md"
+                fw={500}
+              >
+                Now you might ask,{' '}
+              </Text>
+              <Text size={'2rem'} mx="auto" w="60%" ta="center" fw={700}>
+                Are we going to start{' '}
+                <Text component="span" fw={700} c="red">
+                  re-distributing
+                </Text>{' '}
+                wealth???
+              </Text>
+              <Text
+                size={'1.5rem'}
+                mx="auto"
+                w="60%"
+                ta="center"
+                my={50}
+                fw={500}
+              >
+                or
+              </Text>
+
+              <Text size={'2rem'} mx="auto" w="60%" ta="center" fw={700}>
+                Why are we{' '}
+                <Text component="span" fw={700} c="red">
+                  punishing
+                </Text>{' '}
+                people who are smart with money???
+              </Text>
+            </motion.div>
+
+            <motion.div>
+              <Text
+                size={'2rem'}
+                fw={700}
+                mx="auto"
+                w="60%"
+                ta="center"
+                mb={200}
+              >
+                Not quite...
+              </Text>
+            </motion.div>
+
+            <Text size={'2rem'} mx="auto" w="60%" ta="center" my={200}>
+              Under Elizabeth Warren's Wealth Tax proposal, a billionaire worth{' '}
+              <Text component="span" fw={700}>
+                $10 billion dollars
+              </Text>{' '}
+              would pay only{' '}
+              <Text component="span" fw={700} c="orange.6">
+                $289 million dollars.
+              </Text>{' '}
+            </Text>
+
+            <Text size={'2rem'} mx="auto" w="60%" ta="center" mt={150}>
+              Yes it's "ONLY" <b>$289 million dollars</b> because in the context
+              of an average American of net wealth <b>$192,200</b>, that's less
+              than <b>$6,000</b> dollars a year.
+            </Text>
+
+            <Text size={'2rem'} mx="auto" w="60%" ta="center" my={50}>
+              The median income American pays around <b>$18,000</b> a year in
+              taxes.
+            </Text>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <Container w="60%" mx="auto" mb={100}>
+                <Card withBorder p="xl">
+                  <Text size="xl" fw={700} mb={100} ta="center">
+                    Effective Tax Rate
+                  </Text>
+                  <Box
+                    style={{
+                      display: 'flex',
+                      alignItems: 'flex-end',
+                      height: '300px',
+                      gap: '40px',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <Box style={{ textAlign: 'center' }}>
+                      <Box
+                        style={{
+                          width: '120px',
+                          background: '#228BE6',
+                          height: '100px',
+                          marginBottom: '12px',
+                        }}
+                      />
+                      <Text size="sm" fw={500}>
+                        Billionaire
+                      </Text>
+                      <Text size="sm" c="dimmed">
+                        2.9%
+                      </Text>
+                    </Box>
+                    <Box style={{ textAlign: 'center' }}>
+                      <Box
+                        style={{
+                          width: '120px',
+                          background: '#FA5252',
+                          height: '300px',
+                          marginBottom: '12px',
+                        }}
+                      />
+                      <Text size="sm" fw={500}>
+                        Median American
+                      </Text>
+                      <Text size="sm" c="dimmed">
+                        9.4%
+                      </Text>
+                    </Box>
+                  </Box>
+                </Card>
+              </Container>
+            </motion.div>
+
+            <Text size={'2rem'} mx="auto" w="60%" ta="center" my={50}>
+              That is <b>3 times</b> more in terms of relative wealth than the
+              average billionaire pays.
+            </Text>
+
+            <Text size={'2rem'} mx="auto" w="60%" ta="center" mt={300}>
+              While the rich will stay rich, the money from this tax program
+              will generate{' '}
+              <Text component="span" fw={700} c="green.6">
+                200 billion dollars
+              </Text>{' '}
+              a year to fund public services.
+            </Text>
+
+            <Text size={'2rem'} mx="auto" w="60%" ta="center" mt={100}>
+              While not taking a penny from more than{' '}
+              <Text component="span" fw={700} c="red.6">
+                99.9% of Americans.
+              </Text>
+            </Text>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <Text size="2rem" fw={700} mx="auto" w="60%" ta="center" mt={200}>
+                Try it yourself:
+              </Text>
+
+              <Container w="60%" mx="auto" mt={50} mb={200}>
+                <Card withBorder p="xl">
+                  <Text size="2rem" mb="lg">
+                    Wealth Tax Calculator
+                  </Text>
+
+                  <NumberInput
+                    label="Enter your net worth"
+                    placeholder="Enter amount in dollars"
+                    value={netWorth}
+                    onChange={(value) => {
+                      const numValue =
+                        typeof value === 'string'
+                          ? parseFloat(value.replace(/\$\s?|(,*)/g, ''))
+                          : value;
+                      setNetWorth(numValue || 0);
+                    }}
+                    size="lg"
+                    mb="md"
+                  />
+                  <Text size="sm" c="dimmed">
+                    (Your net worth)
+                  </Text>
+
+                  <Text size="xl" fw={700} mb="md">
+                    {netWorth >= 1000000000
+                      ? `$${(netWorth / 1000000000).toFixed(2)} billion`
+                      : netWorth >= 1000000
+                        ? `$${(netWorth / 1000000).toFixed(2)} million`
+                        : `$${netWorth.toLocaleString()}`}
+                  </Text>
+
+                  <Card withBorder>
+                    <Text size="lg" fw={600} mb="xs">
+                      Your annual wealth tax would be:
+                    </Text>
+                    <Text size="xl" c={netWorth >= 50000000 ? 'red' : 'green'}>
+                      {netWorth < 50000000
+                        ? '$0'
+                        : `$${calculateWealthTax(netWorth).toLocaleString(
+                            undefined,
+                            {
+                              maximumFractionDigits: 0,
+                            },
+                          )}`}
+                    </Text>
+
+                    <Text size="sm" c="dimmed" mt="md">
+                      {netWorth < 50000000
+                        ? 'You are not affected by the wealth tax!'
+                        : netWorth > 1000000000
+                          ? 'This represents a 2% tax on wealth between $50M and $1B, and 3% on wealth above $1B'
+                          : 'This represents a 2% tax on your wealth above $50 million'}
+                    </Text>
+                  </Card>
+                </Card>
+              </Container>
             </motion.div>
           </Container>
         </div>
