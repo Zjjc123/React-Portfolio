@@ -4,39 +4,51 @@ import { Container, Text, Box } from '@mantine/core';
 import { motion } from 'framer-motion';
 import { BackButton } from '../../components/BackButton';
 import { useState } from 'react';
+import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+import Image from 'next/image';
 
 interface Book {
   title: string;
   author: string;
   color: string;
-  spine: string;
+  spine: StaticImport;
+  image: StaticImport;
 }
+
+import tkamCover from './books/tkam/tkam.cover.png';
+import tkamSpine from './books/tkam/tkam.spine.png';
+import tgaCover from './books/tga/tga.cover.jpg';
+import tgaSpine from './books/tga/tga.spine.png';
 
 const books: Book[] = [
   {
     title: 'To Kill a Mockingbird',
     author: 'Harper Lee',
     color: '#27AE60',
-    spine: '#2ECC71',
+    spine: tkamSpine,
+    image: tkamCover,
   },
   {
     title: 'The Great Gatsby',
     author: 'F. Scott Fitzgerald',
     color: '#2C3E50',
-    spine: '#34495E',
+    spine: tgaSpine,
+    image: tgaCover,
   },
-  {
-    title: '1984',
-    author: 'George Orwell',
-    color: '#C0392B',
-    spine: '#E74C3C',
-  },
-  {
-    title: 'To Kill a Mockingbird',
-    author: 'Harper Lee',
-    color: '#27AE60',
-    spine: '#2ECC71',
-  },
+  // {
+  //   title: '1984',
+  //   author: 'George Orwell',
+  //   color: '#C0392B',
+  //   spine: '#E74C3C',
+  //   image: '/images/1984.jpg',
+  // },
+  // {
+  //   title: 'To Kill a Mockingbird',
+  //   author: 'Harper Lee',
+  //   color: '#27AE60',
+  //   spine: '#2ECC71',
+  //   image: '/images/mockingbird.jpg',
+  // },
 ];
 
 const BookComponent = ({
@@ -89,7 +101,6 @@ const BookComponent = ({
           position: 'absolute',
           width: '100%',
           height: '100%',
-          backgroundColor: book.spine,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -108,9 +119,7 @@ const BookComponent = ({
           borderRight: '1px solid rgba(0,0,0,0.1)',
         }}
       >
-        <Text size="sm" c="white" fw={500}>
-          {book.title}
-        </Text>
+        <Image src={book.spine} alt={book.title} fill />
       </Box>
 
       {/* Front Cover */}
@@ -120,21 +129,20 @@ const BookComponent = ({
           width: '170px',
           height: '200px',
           backgroundColor: book.color,
-          transform: 'rotateY(80deg) translateZ(40px)',
+          transform: 'rotateY(80deg) translateZ(39px)',
           transformOrigin: 'left center',
-          padding: '20px',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
           clipPath: 'polygon(0 0, 100% 3%, 100% 97%, 0 100%)',
+          overflow: 'hidden',
         }}
       >
-        <Text size="lg" c="white" fw={700}>
-          {book.title}
-        </Text>
-        <Text size="sm" c="white" opacity={0.8}>
-          {book.author}
-        </Text>
+        <Image
+          src={book.image}
+          alt={book.title}
+          fill
+          style={{
+            objectFit: 'cover',
+          }}
+        />
       </Box>
     </motion.div>
   );
