@@ -6,7 +6,7 @@ export default function Personal() {
   return (
     <>
       <Box>
-        <Text size="xl" fw={700}>
+        <Text size="3rem" fw={700}>
           JASON ZHANG
         </Text>
         <Text my="md">
