@@ -1,7 +1,7 @@
 'use client';
 
 import { Container, Text, Box } from '@mantine/core';
-import { motion } from 'framer-motion';
+import { motion, transform } from 'framer-motion';
 import { BackButton } from '../../components/BackButton';
 import { useState } from 'react';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
@@ -20,7 +20,10 @@ import tkamSpine from './books/tkam/tkam.spine.png';
 import tgaCover from './books/tga/tga.cover.jpg';
 import tgaSpine from './books/tga/tga.spine.png';
 
-const books: Book[] = [
+import bg from './bg.jpg';
+import bg2 from './bg2.jpg';
+
+const bookClubBooks: Book[] = [
   {
     title: 'To Kill a Mockingbird',
     author: 'Harper Lee',
@@ -35,20 +38,106 @@ const books: Book[] = [
     spine: tgaSpine,
     image: tgaCover,
   },
-  // {
-  //   title: '1984',
-  //   author: 'George Orwell',
-  //   color: '#C0392B',
-  //   spine: '#E74C3C',
-  //   image: '/images/1984.jpg',
-  // },
-  // {
-  //   title: 'To Kill a Mockingbird',
-  //   author: 'Harper Lee',
-  //   color: '#27AE60',
-  //   spine: '#2ECC71',
-  //   image: '/images/mockingbird.jpg',
-  // },
+  {
+    title: 'To Kill a Mockingbird',
+    author: 'Harper Lee',
+    color: '#27AE60',
+    spine: tkamSpine,
+    image: tkamCover,
+  },
+  {
+    title: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+    color: '#2C3E50',
+    spine: tgaSpine,
+    image: tgaCover,
+  },
+  {
+    title: 'To Kill a Mockingbird',
+    author: 'Harper Lee',
+    color: '#27AE60',
+    spine: tkamSpine,
+    image: tkamCover,
+  },
+  {
+    title: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+    color: '#2C3E50',
+    spine: tgaSpine,
+    image: tgaCover,
+  },
+  {
+    title: 'To Kill a Mockingbird',
+    author: 'Harper Lee',
+    color: '#27AE60',
+    spine: tkamSpine,
+    image: tkamCover,
+  },
+  {
+    title: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+    color: '#2C3E50',
+    spine: tgaSpine,
+    image: tgaCover,
+  },
+  {
+    title: 'To Kill a Mockingbird',
+    author: 'Harper Lee',
+    color: '#27AE60',
+    spine: tkamSpine,
+    image: tkamCover,
+  },
+  {
+    title: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+    color: '#2C3E50',
+    spine: tgaSpine,
+    image: tgaCover,
+  },
+  {
+    title: 'To Kill a Mockingbird',
+    author: 'Harper Lee',
+    color: '#27AE60',
+    spine: tkamSpine,
+    image: tkamCover,
+  },
+  {
+    title: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+    color: '#2C3E50',
+    spine: tgaSpine,
+    image: tgaCover,
+  },
+  {
+    title: 'To Kill a Mockingbird',
+    author: 'Harper Lee',
+    color: '#27AE60',
+    spine: tkamSpine,
+    image: tkamCover,
+  },
+  {
+    title: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+    color: '#2C3E50',
+    spine: tgaSpine,
+    image: tgaCover,
+  },
+];
+const personalBooks: Book[] = [
+  {
+    title: 'To Kill a Mockingbird',
+    author: 'Harper Lee',
+    color: '#27AE60',
+    spine: tkamSpine,
+    image: tkamCover,
+  },
+  {
+    title: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+    color: '#2C3E50',
+    spine: tgaSpine,
+    image: tgaCover,
+  },
 ];
 
 const BookComponent = ({
@@ -87,12 +176,12 @@ const BookComponent = ({
       style={{
         width: '40px',
         height: '200px',
-        // backgroundColor: book.color,
         margin: '0 5px',
         position: 'relative',
         transformStyle: 'preserve-3d',
         transformOrigin: 'right center',
         cursor: 'pointer',
+        zIndex: 100,
       }}
     >
       {/* Spine */}
@@ -152,39 +241,127 @@ export default function BooksPage() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <Container py="xl">
-      <BackButton href="/" />
-      <Box
-        style={{
-          perspective: '1000px',
-          perspectiveOrigin: 'center',
-          marginTop: '50px',
-        }}
-      >
+    <Box
+      w="100%"
+      h="100vh"
+      style={{
+        backgroundImage: `url(${bg.src})`,
+        backgroundRepeat: 'repeat',
+        backgroundSize: '500px',
+      }}
+    >
+      <Container size="xl" py="xl">
+        <BackButton href="/" />
         <Box
           style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'flex-end',
-            minHeight: '300px',
-            padding: '20px',
-            backgroundColor: '#f5f5f5',
-            borderRadius: '8px',
-            boxShadow: 'inset 0 0 10px rgba(0,0,0,0.1)',
+            marginTop: '50px',
           }}
         >
-          {books.map((book, index) => (
-            <BookComponent
-              key={index}
-              book={book}
-              index={index}
-              isHovered={hoveredIndex !== null}
-              hoveredIndex={hoveredIndex}
-              setHoveredIndex={setHoveredIndex}
-            />
-          ))}
+          <Box
+            style={{
+              display: 'flex',
+              justifyContent: 'flex-start',
+              alignItems: 'flex-end',
+              minHeight: '300px',
+              padding: '20px',
+              paddingLeft: '100px',
+              zIndex: 100,
+            }}
+          >
+            {bookClubBooks.map((book, index) => (
+              <BookComponent
+                key={index}
+                book={book}
+                index={index}
+                isHovered={
+                  hoveredIndex !== null && hoveredIndex < bookClubBooks.length
+                }
+                hoveredIndex={hoveredIndex}
+                setHoveredIndex={setHoveredIndex}
+              />
+            ))}
+          </Box>
+          <Box
+            style={{
+              width: '100%',
+              height: '50px',
+              backgroundColor: '#8B4513',
+              backgroundImage: `url(${bg2.src})`,
+              left: 0,
+              zIndex: -1,
+              transform: 'rotateX(60deg)',
+              transformOrigin: 'top',
+              boxShadow: 'inset 0 2px 5px rgba(0,0,0,0.5)',
+            }}
+          />
+
+          <Box
+            style={{
+              width: '100%',
+              height: '200px',
+              backgroundColor: '#8B4513',
+              backgroundImage: `url(${bg2.src})`,
+              transform:
+                'perspective(1000px) rotateX(60deg) translateZ(216px) translatey(-125px)',
+              transformOrigin: 'bottom',
+              zIndex: -1,
+              boxShadow: 'inset 0 2px 5px rgba(0,0,0,0.5)',
+            }}
+          />
+
+          <Box
+            style={{
+              display: 'flex',
+              justifyContent: 'flex-start',
+              alignItems: 'flex-end',
+              minHeight: '300px',
+              padding: '20px',
+              paddingLeft: '100px',
+              zIndex: 100,
+            }}
+          >
+            {personalBooks.map((book, index) => (
+              <BookComponent
+                key={index}
+                book={book}
+                index={index + bookClubBooks.length}
+                isHovered={
+                  hoveredIndex !== null && hoveredIndex >= bookClubBooks.length
+                }
+                hoveredIndex={hoveredIndex}
+                setHoveredIndex={setHoveredIndex}
+              />
+            ))}
+          </Box>
         </Box>
-      </Box>
-    </Container>
+        <Box
+          style={{
+            width: '100%',
+            height: '50px',
+            backgroundColor: '#8B4513',
+            backgroundImage: `url(${bg2.src})`,
+            left: 0,
+            zIndex: -1,
+            transform: 'rotateX(60deg)',
+            transformOrigin: 'top',
+            boxShadow: 'inset 0 2px 5px rgba(0,0,0,0.5)',
+          }}
+        />
+
+        <Box
+          style={{
+            width: '100%',
+            height: '200px',
+            backgroundColor: '#8B4513',
+            backgroundImage: `url(${bg2.src})`,
+            transform:
+              'perspective(1000px) rotateX(60deg) translateZ(216px) translatey(-125px)',
+            transformOrigin: 'bottom',
+            zIndex: -1,
+            boxShadow: 'inset 0 2px 5px rgba(0,0,0,0.5)',
+          }}
+        />
+      </Container>
+    </Box>
   );
 }
