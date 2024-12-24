@@ -11,8 +11,8 @@ export default function Home() {
   const paperBackground = {
     background: `
       repeating-linear-gradient(transparent, transparent 29px, #d8d8d8 29px, #d8d8d8 30px),
-      repeating-linear-gradient(90deg, transparent, transparent 29px, #f8f8f8 29px, #f8f8f8 30px),
-      linear-gradient(#ffffff, #fdfdfd)
+      repeating-linear-gradient(90deg, transparent, transparent 29px, #FEF7B1 29px, #FEF7B1 30px),
+      linear-gradient(#FFFAC8, #FEF7B1)
     `,
     backgroundSize: '100% 100%, 20px 20px, 20px 20px',
   };
@@ -28,77 +28,126 @@ export default function Home() {
           backgroundSize: '20px 20px',
         }}
       >
-        <Container>
+        <Container pt="xl">
           <div style={{ position: 'relative' }}>
-          <Pin top="10px" right="30%" color="red" />
-          <motion.div
-            whileHover={{ rotateZ: -2 }}
-            style={{
-              transformOrigin: '70% 50%',
-              width: '85%',
-            }}
-          >
-            <Card
-              shadow="sm"
-              radius="md"
-              withBorder
+            <Pin top="10px" right="30%" color="red" />
+            <motion.div
+              whileHover={{ rotateZ: -2 }}
               style={{
-                ...paperBackground,
-                transform: 'rotate(-3deg)',
-                marginBottom: '4rem',
+                transformOrigin: '70% 50%',
+                width: '85%',
               }}
             >
-              <Personal />
-            </Card>
-          </motion.div>
-        </div>
+              <Card
+                shadow="sm"
+                radius="md"
+                withBorder
+                style={{
+                  ...paperBackground,
+                  transform: 'rotate(-3deg)',
+                  marginBottom: '4rem',
+                }}
+              >
+                <Personal />
+              </Card>
+            </motion.div>
+          </div>
 
-        <div style={{ position: 'relative' }}>
-          <Pin top="10px" left="50%" color="red" />
-          <motion.div
-            whileHover={{ rotateZ: -2 }}
-            style={{
-              transformOrigin: 'center',
-            }}
-          >
-            <Card
-              shadow="sm"
-              radius="md"
-              withBorder
+          <div style={{ position: 'relative' }}>
+            <Pin top="10px" left="30%" color="red" />
+            <motion.div
+              whileHover={{ rotateZ: -5 }}
               style={{
-                ...paperBackground,
-                marginBottom: '4rem',
-                marginLeft: '4rem',
-                paddingTop: '2rem',
+                width: '50%',
+                transformOrigin: '70% 20%',
               }}
             >
-              <HoverLink href="/stories" text="STORIES" />
-            </Card>
-          </motion.div>
-        </div>
+              <Card
+                shadow="sm"
+                radius="md"
+                withBorder
+                style={{
+                  ...paperBackground,
+                  transform: 'rotate(2deg)',
+                  marginLeft: '2rem',
+                  paddingTop: '3rem',
+                }}
+              >
+                <HoverLink
+                  href="/videos"
+                  text="VIDEOS"
+                  style={{
+                    fontFamily: "'Tempus Sans ITC', cursive",
+                    fontSize: '2rem',
+                    fontWeight: 'bold',
+                  }}
+                />
+              </Card>
+            </motion.div>
+          </div>
 
-        <div style={{ position: 'relative' }}>
-          <Pin top="10px" left="30%" color="red" />
-          <motion.div
-            whileHover={{ rotateZ: -5 }}
-            style={{
-              width: '50%',
-              transformOrigin: '70% 20%',
-            }}
-          >
-            <Card
-              shadow="sm"
-              radius="md"
-              withBorder
+          <div style={{ position: 'relative' }}>
+            <Pin top="10px" left="40%" color="red" />
+            <motion.div
+              whileHover={{ rotateZ: 2 }}
               style={{
-                ...paperBackground,
-                transform: 'rotate(2deg)',
-                marginLeft: '2rem',
-                paddingTop: '4rem',
+                width: '70%',
+                marginTop: '15px',
               }}
             >
-              <HoverLink href="/videos" text="VIDEOS" />
-            </Card>
+              <Card
+                shadow="sm"
+                radius="md"
+                withBorder
+                style={{
+                  ...paperBackground,
+                  transform: 'rotate(-1deg)',
+                  marginLeft: '20rem',
+                  paddingTop: '3rem',
+                  width: '100%',
+                }}
+              >
+                <HoverLink
+                  href="/bookshelf"
+                  text="BOOKSHELF"
+                  style={{
+                    fontFamily: "'Monotype Corsiva', cursive",
+                    fontSize: '2rem',
+                  }}
+                />
+              </Card>
+            </motion.div>
+          </div>
+
+          <div style={{ position: 'relative' }}>
+            <Pin top="10px" left="50%" color="red" />
+            <motion.div
+              whileHover={{ rotateZ: -2 }}
+              style={{
+                transformOrigin: 'center',
+                marginTop: '40px',
+              }}
+            >
+              <Card
+                shadow="sm"
+                radius="md"
+                withBorder
+                style={{
+                  ...paperBackground,
+                  marginBottom: '4rem',
+                  marginLeft: '4rem',
+                  paddingTop: '2rem',
+                }}
+              >
+                <HoverLink
+                  href="/stories"
+                  text="STORIES"
+                  style={{
+                    fontFamily: "'Comic Sans MS', cursive",
+                    fontSize: '2rem',
+                  }}
+                />
+              </Card>
             </motion.div>
           </div>
         </Container>
