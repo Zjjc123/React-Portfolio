@@ -1,8 +1,8 @@
 'use client';
 import { Container, Flex } from '@mantine/core';
-import VideoModule from '../../components/VideoModule';
+import VideoModule from './components/VideoModule';
 import { BackButton } from '../../components/BackButton';
-  
+
 type Props = {};
 
 export default function VideoPage({}: Props) {
