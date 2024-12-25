@@ -18,7 +18,7 @@ export default function HoverLink({ href, text, style }: HoverLinkProps) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <Text size={style?.fontSize || 'xl'} fw={500} c={style?.color || 'dark'}>
+      <Text style={{ ...style }} c={style?.color || 'dark'}>
         {isHovered && '>'} {text}
       </Text>
     </Link>

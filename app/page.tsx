@@ -79,7 +79,6 @@ export default function Home() {
                   style={{
                     fontFamily: "'Tempus Sans ITC', cursive",
                     fontSize: '2rem',
-                    fontWeight: 'bold',
                   }}
                 />
               </Card>
