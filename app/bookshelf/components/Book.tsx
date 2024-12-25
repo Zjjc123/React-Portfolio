@@ -4,10 +4,12 @@ import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
 import Image from 'next/image';
 
+const BOOK_DEFAULT_COLOR = '#c0c0c0';
+
 export interface Book {
   title: string;
   author: string;
-  color: string;
+  color?: string;
   spine: StaticImport;
   image: StaticImport;
   link: string;
@@ -70,6 +72,7 @@ export const BookComponent = ({
           height: '100%',
           display: 'flex',
           alignItems: 'center',
+          backgroundColor: book.color || BOOK_DEFAULT_COLOR,
           justifyContent: 'center',
           padding: '10px',
           writingMode: 'vertical-rl',
@@ -95,7 +98,7 @@ export const BookComponent = ({
           position: 'absolute',
           width: '170px',
           height: '260px',
-          backgroundColor: book.color,
+          backgroundColor: book.color || BOOK_DEFAULT_COLOR,
           transform: 'rotateY(80deg) translateZ(39px)',
           transformOrigin: 'left center',
           clipPath: 'polygon(0 0, 100% 3%, 100% 97%, 0 100%)',

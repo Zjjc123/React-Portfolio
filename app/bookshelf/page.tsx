@@ -18,7 +18,6 @@ const bookClubBooks: Book[] = [
   {
     title: 'The Great Gatsby',
     author: 'F. Scott Fitzgerald',
-    color: '#2C3E50',
     spine: tgaSpine,
     image: tgaCover,
     link: '/bookshelf/books/tga',
@@ -28,7 +27,6 @@ const personalBooks: Book[] = [
   {
     title: 'The History Of Western Philosophy',
     author: 'Bertrand Russell',
-    color: '#27AE60',
     spine: thowpSpine,
     image: thowpCover,
     link: '/bookshelf/books/thowp',
