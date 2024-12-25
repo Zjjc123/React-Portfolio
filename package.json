@@ -20,7 +20,8 @@
     "portfolio": "file:",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "recharts": "^2.13.3"
+    "recharts": "^2.13.3",
+    "sharp": "^0.33.5"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
