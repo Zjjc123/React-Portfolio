@@ -12,6 +12,8 @@ import bg from './bg.jpg';
 import bg2 from './bg2.jpg';
 import { Book, BookComponent } from './components/Book';
 
+import { useRouter } from 'next/navigation';
+
 const bookClubBooks: Book[] = [
   {
     title: 'The Great Gatsby',
@@ -35,6 +37,7 @@ const personalBooks: Book[] = [
 
 export default function BooksPage() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const router = useRouter();
 
   return (
     <>
@@ -77,6 +80,7 @@ export default function BooksPage() {
                   hoveredIndex={hoveredIndex}
                   setHoveredIndex={setHoveredIndex}
                   link={book.link}
+                  onClick={() => router.push(book.link)}
                 />
               ))}
             </Box>
@@ -131,6 +135,7 @@ export default function BooksPage() {
                   hoveredIndex={hoveredIndex}
                   setHoveredIndex={setHoveredIndex}
                   link={book.link}
+                  onClick={() => router.push(book.link)}
                 />
               ))}
             </Box>
