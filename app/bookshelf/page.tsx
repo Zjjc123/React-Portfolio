@@ -4,66 +4,32 @@ import { Container, Box } from '@mantine/core';
 import { BackButton } from '../../components/BackButton';
 import { useState } from 'react';
 
-import tkamCover from './books/tkam/tkam.cover.png';
-import tkamSpine from './books/tkam/tkam.spine.png';
-import tgaCover from './books/tga/tga.cover.jpg';
-import tgaSpine from './books/tga/tga.spine.png';
-
+import thowpCover from './books/thowp/cover.jpg';
+import thowpSpine from './books/thowp/spine.jpg';
+import tgaCover from './books/tga/cover.jpg';
+import tgaSpine from './books/tga/spine.jpg';
 import bg from './bg.jpg';
 import bg2 from './bg2.jpg';
 import { Book, BookComponent } from './components/Book';
 
 const bookClubBooks: Book[] = [
   {
-    title: 'To Kill a Mockingbird',
-    author: 'Harper Lee',
-    color: '#27AE60',
-    spine: tkamSpine,
-    image: tkamCover,
-  },
-  {
     title: 'The Great Gatsby',
     author: 'F. Scott Fitzgerald',
     color: '#2C3E50',
     spine: tgaSpine,
     image: tgaCover,
-  },
-  {
-    title: 'To Kill a Mockingbird',
-    author: 'Harper Lee',
-    color: '#27AE60',
-    spine: tkamSpine,
-    image: tkamCover,
-  },
-  {
-    title: 'The Great Gatsby',
-    author: 'F. Scott Fitzgerald',
-    color: '#2C3E50',
-    spine: tgaSpine,
-    image: tgaCover,
-  },
-  {
-    title: 'To Kill a Mockingbird',
-    author: 'Harper Lee',
-    color: '#27AE60',
-    spine: tkamSpine,
-    image: tkamCover,
+    link: '/bookshelf/books/tga',
   },
 ];
 const personalBooks: Book[] = [
   {
-    title: 'To Kill a Mockingbird',
-    author: 'Harper Lee',
+    title: 'The History Of Western Philosophy',
+    author: 'Bertrand Russell',
     color: '#27AE60',
-    spine: tkamSpine,
-    image: tkamCover,
-  },
-  {
-    title: 'The Great Gatsby',
-    author: 'F. Scott Fitzgerald',
-    color: '#2C3E50',
-    spine: tgaSpine,
-    image: tgaCover,
+    spine: thowpSpine,
+    image: thowpCover,
+    link: '/bookshelf/books/thowp',
   },
 ];
 
@@ -110,6 +76,7 @@ export default function BooksPage() {
                   }
                   hoveredIndex={hoveredIndex}
                   setHoveredIndex={setHoveredIndex}
+                  link={book.link}
                 />
               ))}
             </Box>
@@ -163,6 +130,7 @@ export default function BooksPage() {
                   }
                   hoveredIndex={hoveredIndex}
                   setHoveredIndex={setHoveredIndex}
+                  link={book.link}
                 />
               ))}
             </Box>

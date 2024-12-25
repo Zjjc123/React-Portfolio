@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 export interface Book {
   title: string;
@@ -10,6 +11,7 @@ export interface Book {
   color: string;
   spine: StaticImport;
   image: StaticImport;
+  link: string;
 }
 
 export const BookComponent = ({
@@ -18,13 +20,16 @@ export const BookComponent = ({
   isHovered,
   hoveredIndex,
   setHoveredIndex,
+  link,
 }: {
   book: Book;
   index: number;
   isHovered: boolean;
   hoveredIndex: number | null;
   setHoveredIndex: (index: number | null) => void;
+  link: string;
 }) => {
+  const router = useRouter();
   return (
     <motion.div
       whileHover={{
@@ -47,7 +52,7 @@ export const BookComponent = ({
       onHoverEnd={() => setHoveredIndex(null)}
       style={{
         width: '40px',
-        height: '200px',
+        height: '260px',
         margin: '0 5px',
         position: 'relative',
         transformStyle: 'preserve-3d',
@@ -55,6 +60,7 @@ export const BookComponent = ({
         cursor: 'pointer',
         zIndex: 100,
       }}
+      onClick={() => router.push(link)}
     >
       {/* Spine */}
       <Box
@@ -88,7 +94,7 @@ export const BookComponent = ({
         style={{
           position: 'absolute',
           width: '170px',
-          height: '200px',
+          height: '260px',
           backgroundColor: book.color,
           transform: 'rotateY(80deg) translateZ(39px)',
           transformOrigin: 'left center',
