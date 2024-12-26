@@ -84,14 +84,16 @@ export default function BooksPage() {
             </Box>
             <Box
               style={{
-                width: '100%',
+                width: '98%',
                 height: '50px',
+                marginLeft: '1%',
                 backgroundColor: '#8B4513',
                 backgroundImage: `url(${bg2.src})`,
                 left: 0,
                 zIndex: -1,
-                transform: 'rotateX(60deg)',
-                transformOrigin: 'top',
+                transform:
+                  'rotateX(60deg) translateZ(-18px) translateY(-100px)',
+                transformOrigin: 'bottom',
                 boxShadow: 'inset 0 2px 5px rgba(0,0,0,0.5)',
               }}
             />
@@ -103,7 +105,7 @@ export default function BooksPage() {
                 backgroundColor: '#8B4513',
                 backgroundImage: `url(${bg2.src})`,
                 transform:
-                  'perspective(1000px) rotateX(60deg) translateZ(216px) translatey(-125px)',
+                  'perspective(1000px) rotateX(67deg) translateZ(236px) translatey(-125px)',
                 transformOrigin: 'bottom',
                 zIndex: -1,
                 boxShadow: 'inset 0 2px 5px rgba(0,0,0,0.5)',
