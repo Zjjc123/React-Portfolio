@@ -43,7 +43,7 @@ export default function BooksPage() {
 
       <Box
         w="100%"
-        h="100vh"
+        mih="100vh"
         style={{
           backgroundImage: `url(${bg.src})`,
           backgroundRepeat: 'repeat',

@@ -1,6 +1,6 @@
 'use client';
 
-import { Container, Card, Box } from '@mantine/core';
+import { Container, Card, Box, Text } from '@mantine/core';
 import Personal from '../components/Personal';
 import Pin from '../components/Pins';
 import HoverLink from '../components/HoverLink';
@@ -75,9 +75,8 @@ export default function Home() {
               >
                 <HoverLink
                   href="/videos"
-                  text="VIDEOS"
+                  text="📺 videos"
                   style={{
-                    fontFamily: "'Tempus Sans ITC', cursive",
                     fontSize: '2rem',
                   }}
                 />
@@ -108,9 +107,8 @@ export default function Home() {
               >
                 <HoverLink
                   href="/bookshelf"
-                  text="BOOKSHELF"
+                  text="📚 bookshelf"
                   style={{
-                    fontFamily: "'Monotype Corsiva', cursive",
                     fontSize: '2rem',
                   }}
                 />
@@ -140,9 +138,8 @@ export default function Home() {
               >
                 <HoverLink
                   href="/stories"
-                  text="STORIES"
+                  text="📖 stories"
                   style={{
-                    fontFamily: "'Comic Sans MS', cursive",
                     fontSize: '2rem',
                   }}
                 />
