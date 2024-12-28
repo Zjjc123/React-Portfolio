@@ -54,7 +54,7 @@ export default function Home() {
           </div>
 
           <div style={{ position: 'relative' }}>
-            <Pin top="10px" left="30%" color="red" />
+            <Pin top="10px" left="30%" color="#0AA90B" />
             <motion.div
               whileHover={{ rotateZ: -5 }}
               style={{
@@ -85,7 +85,7 @@ export default function Home() {
           </div>
 
           <div style={{ position: 'relative' }}>
-            <Pin top="10px" left="40%" color="red" />
+            <Pin top="10px" left="40%" color="#FF9715" />
             <motion.div
               whileHover={{ rotateZ: 2 }}
               style={{
@@ -139,6 +139,34 @@ export default function Home() {
                 <HoverLink
                   href="/stories"
                   text="📖 stories"
+                  style={{
+                    fontSize: '2rem',
+                  }}
+                />
+              </Card>
+            </motion.div>
+            <Pin top="10px" left="30%" color="blue" />
+            <motion.div
+              whileHover={{ rotateZ: -2 }}
+              style={{
+                transformOrigin: 'center',
+                marginTop: '40px',
+              }}
+            >
+              <Card
+                shadow="sm"
+                radius="md"
+                withBorder
+                style={{
+                  ...paperBackground,
+                  marginBottom: '4rem',
+                  paddingTop: '2rem',
+                }}
+                w="50%"
+              >
+                <HoverLink
+                  href="/thoughts"
+                  text="💭 thoughts"
                   style={{
                     fontSize: '2rem',
                   }}
